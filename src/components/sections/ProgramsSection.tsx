@@ -199,10 +199,16 @@ export function ProgramsSection() {
             </AnimatePresence>
 
             {/* Custom Swiper Navigation Buttons */}
-            <button className="swiper-button-prev-custom absolute top-1/2 left-2 lg:-left-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
+            <button 
+              className="swiper-button-prev-custom absolute top-1/2 left-2 lg:-left-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0"
+              aria-label="Previous Slide"
+            >
               <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
-            <button className="swiper-button-next-custom absolute top-1/2 right-2 lg:-right-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
+            <button 
+              className="swiper-button-next-custom absolute top-1/2 right-2 lg:-right-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0"
+              aria-label="Next Slide"
+            >
               <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
           </div>

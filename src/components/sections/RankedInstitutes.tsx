@@ -174,10 +174,16 @@ export default function RankedInstitutes() {
 
           {/* Custom Navigation Buttons - Positioned Bottom Right side */}
           <div className="flex justify-end gap-3 mt-6 pr-1 z-10 relative">
-            <button className="swiper-button-prev-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+            <button 
+              className="swiper-button-prev-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              aria-label="Previous Slide"
+            >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button className="swiper-button-next-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+            <button 
+              className="swiper-button-next-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              aria-label="Next Slide"
+            >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>

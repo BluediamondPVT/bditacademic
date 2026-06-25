@@ -137,7 +137,7 @@ export function Footer() {
         <div className="border-t border-white/10 bg-[#1A1A1A] py-6">
           <div className="container mx-auto px-4 md:px-8 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-400 text-center md:text-left">
-              © {new Date().getFullYear()} <span className="text-[#3B82F6] font-semibold">BDIT Academic</span>. All Rights Reserved.
+              © {new Date().getFullYear()} <span className="text-[#60A5FA] font-semibold">BDIT Academic</span>. All Rights Reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

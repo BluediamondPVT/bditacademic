@@ -175,41 +175,53 @@ export function HeroSection() {
             
             {/* Full Name Field */}
             <div className="relative">
-              <label className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm">
+              <label 
+                htmlFor="hero-fullname"
+                className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
+              >
                 Full Name
               </label>
               <input 
+                id="hero-fullname"
                 type="text" 
                 required
                 placeholder="Enter Full Name" 
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
+                className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
               />
             </div>
 
             {/* Phone Number Field */}
             <div className="relative">
-              <label className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm">
+              <label 
+                htmlFor="hero-phone"
+                className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
+              >
                 Phone No.
               </label>
               <input 
+                id="hero-phone"
                 type="tel" 
                 required
                 placeholder="Enter Phone Number" 
                 value={formData.phoneNo}
                 onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
-                className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
+                className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
               />
             </div>
 
             {/* Select Program Dropdown with Custom Arrow */}
             <div className="relative">
-              <label className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm">
+              <label 
+                htmlFor="program-select"
+                className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
+              >
                 Select Program
               </label>
               <div className="relative">
                 <select 
+                  id="program-select"
                   required
                   value={formData.program}
                   onChange={(e) => setFormData({ ...formData, program: e.target.value })}
@@ -234,6 +246,7 @@ export function HeroSection() {
                   onClick={generateCaptcha}
                   className="p-1 md:p-1.5 bg-white border border-gray-200 rounded-md hover:bg-gray-100 active:scale-95 transition-all shadow-sm"
                   title="Refresh Captcha"
+                  aria-label="Refresh Captcha"
                 >
                   <RefreshCcw className="w-3 h-3 md:w-3.5 md:h-3.5 text-gray-600" />
                 </button>
@@ -247,9 +260,10 @@ export function HeroSection() {
                   type="text" 
                   required
                   placeholder="Enter Code" 
+                  aria-label="Enter Captcha Security Code"
                   value={captchaInput}
                   onChange={(e) => setCaptchaInput(e.target.value)}
-                  className="w-2/3 border-2 border-gray-100 bg-white rounded-lg px-3 py-2.5 text-sm md:text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/5 transition-all"
+                  className="w-2/3 border-2 border-gray-100 bg-white rounded-lg px-3 py-2.5 text-sm md:text-base text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/5 transition-all"
                 />
               </div>
             </div>

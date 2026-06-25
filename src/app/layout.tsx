@@ -29,8 +29,47 @@ const poppins = Poppins({
 
 
 export const metadata: Metadata = {
-  title: "BDIT Academic | Premium Education",
-   icons: {
+  metadataBase: new URL("https://bditacademic.vercel.app/"),
+  title: "BDIT Academic | Premium Education & Online Degrees",
+  description: "Upgrade your qualification with UGC Recognised, flexible and affordable online degrees (MBA, MCA, BBA, BCA, M.Com, B.Com, MA, BA) from top-ranked universities at BDIT Academic.",
+  keywords: [
+    "Online Degree", 
+    "UGC Recognised", 
+    "MBA", 
+    "MCA", 
+    "UG Programs", 
+    "PG Programs", 
+    "BBA", 
+    "BCA", 
+    "M.Com", 
+    "B.Com", 
+    "Distance Learning", 
+    "BDIT Academic", 
+    "Premium Education"
+  ],
+  openGraph: {
+    title: "BDIT Academic | Premium Education & Online Degrees",
+    description: "Upgrade your qualification with UGC Recognised, flexible and affordable online degrees from top-ranked universities at BDIT Academic.",
+    url: "https://bditacademic.vercel.app/",
+    siteName: "BDIT Academic",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BDIT Academic - Premium Education & Online Degrees",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BDIT Academic | Premium Education & Online Degrees",
+    description: "Upgrade your qualification with UGC Recognised, flexible and affordable online degrees from top-ranked universities.",
+    images: ["/og-image.png"],
+  },
+  icons: {
     icon: [
       { url: '/fav.png' },
       { url: '/fav.png', type: 'image/png', sizes: '32x32' },
@@ -42,7 +81,6 @@ export const metadata: Metadata = {
     ],
     shortcut: ['/fav.png'],
   },
-  description: "BDIT Academic is a platform for students and faculty to access academic resources, manage coursework, and collaborate on projects.",
 };
 
 export default function RootLayout({

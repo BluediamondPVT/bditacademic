@@ -236,58 +236,68 @@ export function EnquiryHome() {
                   {/* Row 1: Name and Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
                     <div>
+                      <label htmlFor="enquiry-fullname" className="sr-only">Full Name</label>
                       <input
+                        id="enquiry-fullname"
                         type="text"
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Enter Your Full Name"
                         required
-                        className="w-full bg-white text-gray-800 placeholder-gray-400 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
+                        className="w-full bg-white text-gray-800 placeholder-gray-500 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
                       />
                     </div>
                     <div>
+                      <label htmlFor="enquiry-email" className="sr-only">Email Address</label>
                       <input
+                        id="enquiry-email"
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Enter Your Email ID"
                         required
-                        className="w-full bg-white text-gray-800 placeholder-gray-400 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
+                        className="w-full bg-white text-gray-800 placeholder-gray-500 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Phone Number */}
                   <div>
+                    <label htmlFor="enquiry-phone" className="sr-only">Phone Number</label>
                     <input
+                      id="enquiry-phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Enter Your Phone Number"
                       required
-                      className="w-full bg-white text-gray-800 placeholder-gray-400 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
+                      className="w-full bg-white text-gray-800 placeholder-gray-500 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
                     />
                   </div>
 
                   {/* City */}
                   <div>
+                    <label htmlFor="enquiry-city" className="sr-only">City</label>
                     <input
+                      id="enquiry-city"
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
                       placeholder="Enter Your City"
                       required
-                      className="w-full bg-white text-gray-800 placeholder-gray-400 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
+                      className="w-full bg-white text-gray-800 placeholder-gray-500 text-xs sm:text-sm rounded-full py-2.5 px-4 sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium shadow-inner"
                     />
                   </div>
 
                   {/* Course Dropdown */}
                   <div className="relative">
+                    <label htmlFor="course-select" className="sr-only">Choose Course</label>
                     <select
+                      id="course-select"
                       name="course"
                       value={formData.course}
                       onChange={handleInputChange}
@@ -311,20 +321,22 @@ export function EnquiryHome() {
 
                   {/* Message */}
                   <div>
+                    <label htmlFor="enquiry-message" className="sr-only">Message</label>
                     <textarea
+                      id="enquiry-message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Enter Your Message"
                       rows={3}
                       required
-                      className="w-full bg-white text-gray-800 placeholder-gray-400 text-xs sm:text-sm rounded-2xl py-2.5 px-4 sm:rounded-3xl sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium resize-none shadow-inner"
+                      className="w-full bg-white text-gray-800 placeholder-gray-500 text-xs sm:text-sm rounded-2xl py-2.5 px-4 sm:rounded-3xl sm:py-4 sm:px-6 outline-none border-2 border-transparent focus:border-white/30 focus:ring-4 focus:ring-white/10 transition-all duration-300 font-medium resize-none shadow-inner"
                     />
                   </div>
 
                   {/* Privacy note */}
                   <div className="text-center pt-1.5">
-                    <span className="text-[10px] sm:text-xs text-blue-100/80 font-bold tracking-wide">
+                    <span className="text-[10px] sm:text-xs text-blue-50 font-bold tracking-wide">
                       (Privacy and Security Guaranteed)
                     </span>
                   </div>
