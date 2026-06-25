@@ -1,9 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Clock, GraduationCap, ArrowRight } from 'lucide-react';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import GraduationCap from 'lucide-react/dist/esm/icons/graduation-cap';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 // Swiper Imports
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
@@ -18,8 +22,26 @@ import programsData from '@/data/programs.json';
 type TabType = 'ug' | 'pg' | 'diploma';
 
 export function ProgramsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInViewport, setIsInViewport] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('ug');
   const [hoveredTab, setHoveredTab] = useState<TabType | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInViewport(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   const tabs: { id: TabType; label: string }[] = [
     { id: 'ug', label: 'UG Programs' },
@@ -28,7 +50,7 @@ export function ProgramsSection() {
   ];
 
   return (
-    <section className="py-10 md:py-15 bg-slate-50 font-sans overflow-hidden">
+    <section ref={containerRef} className="py-10 md:py-15 bg-slate-50 font-sans overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         
         {/* Section Heading */}
@@ -87,102 +109,110 @@ export function ProgramsSection() {
         </div>
 
        {/* Swiper Slider Block */}
-        <div className="relative max-w-[1400px] mx-auto px-4 md:px-12 group">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Swiper
-                modules={[Navigation, Pagination, A11y, Autoplay]}
-                spaceBetween={30}
-                slidesPerView={1}
-                navigation={{
-                  prevEl: '.swiper-button-prev-custom',
-                  nextEl: '.swiper-button-next-custom',
-                }}
-                pagination={{ clickable: true, dynamicBullets: false }}
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
-                breakpoints={{
-                  640: { slidesPerView: 1 },
-                  768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                }}
-                className="pb-16 flex items-stretch" // Ensure Swiper row stretches to max height
+        {isInViewport ? (
+          <div className="relative max-w-[1400px] mx-auto px-4 md:px-12 group min-h-[450px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
               >
-                {programsData[activeTab].map((program) => (
-                  <SwiperSlide key={program.id} className="h-auto">
-                    {/* Premium Card UI with Equal Height Logic */}
-                    <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(59,130,246,0.1)] transition-all duration-300 hover:-translate-y-2 h-full flex flex-col group/card cursor-pointer">
-                      
-                      {/* Image Container */}
-                      <div className="relative h-48 md:h-56 w-full overflow-hidden bg-gray-100 shrink-0">
-                        <Image
-                          src={program.image}
-                          alt={program.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
-                      </div>
-
-                      {/* Card Content - flex-grow pushes button to the bottom */}
-                      <div className="p-5 md:p-8 flex flex-col flex-grow">
-                        {/* Type Badge */}
-                        <div className="inline-flex px-2.5 py-1 bg-blue-50 text-[#3B82F6] text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-md mb-3 md:mb-4 self-start">
-                          {program.type}
+                <Swiper
+                  modules={[Navigation, Pagination, A11y, Autoplay]}
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  navigation={{
+                    prevEl: '.swiper-button-prev-custom',
+                    nextEl: '.swiper-button-next-custom',
+                  }}
+                  pagination={{ clickable: true, dynamicBullets: false }}
+                  autoplay={{ delay: 5000, disableOnInteraction: false }}
+                  breakpoints={{
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                  }}
+                  className="pb-16 flex items-stretch"
+                >
+                  {programsData[activeTab].map((program) => (
+                    <SwiperSlide key={program.id} className="h-auto">
+                      {/* Premium Card UI with Equal Height Logic */}
+                      <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(59,130,246,0.1)] transition-all duration-300 hover:-translate-y-2 h-full flex flex-col group/card cursor-pointer">
+                        
+                        {/* Image Container */}
+                        <div className="relative h-48 md:h-56 w-full overflow-hidden bg-gray-100 shrink-0">
+                          <Image
+                            src={program.image}
+                            alt={program.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
                         </div>
 
-                        {/* Title */}
-                        <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-900 mb-3 md:mb-4 leading-snug line-clamp-2 min-h-[2.25rem] md:min-h-[3.25rem]">
-                          {program.title}
-                        </h3>
-
-                        {/* Details List */}
-                        <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                          <div className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-gray-600">
-                            <Clock className="w-4 h-4 md:w-5 h-5 text-gray-400 shrink-0 mt-0.5" />
-                            <p><strong>Duration:</strong> {program.duration}</p>
+                        {/* Card Content - flex-grow pushes button to the bottom */}
+                        <div className="p-5 md:p-8 flex flex-col flex-grow">
+                          {/* Type Badge */}
+                          <div className="inline-flex px-2.5 py-1 bg-blue-50 text-[#3B82F6] text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-md mb-3 md:mb-4 self-start">
+                            {program.type}
                           </div>
-                          <div className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-gray-600">
-                            <GraduationCap className="w-4 h-4 md:w-5 text-gray-400 shrink-0 mt-0.5" />
-                            <p className="line-clamp-3"><strong>Eligibility:</strong> {program.eligibility}</p>
+
+                          {/* Title */}
+                          <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-900 mb-3 md:mb-4 leading-snug line-clamp-2 min-h-[2.25rem] md:min-h-[3.25rem]">
+                            {program.title}
+                          </h3>
+
+                          {/* Details List */}
+                          <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                            <div className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-gray-600">
+                              <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                              <span><strong>Duration:</strong> {program.duration}</span>
+                            </div>
+                            <div className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-gray-600">
+                              <GraduationCap className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                              <span className="line-clamp-3"><strong>Eligibility:</strong> {program.eligibility}</span>
+                            </div>
+                          </div>
+
+                          {/* New Liquid CTA Button aligned to bottom via mt-auto */}
+                          <div className="mt-auto">
+                            <Button className="group/btn relative overflow-hidden bg-gradient-to-r from-[#3B82F6] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-xl w-full py-3.5 md:py-5 text-xs md:text-sm lg:text-base font-semibold transition-all duration-300 active:scale-95">
+                              {/* Animated Liquid Overlay */}
+                              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#1D4ED8] to-[#1E40AF] transition-all duration-500 ease-out -translate-x-full group-hover/btn:translate-x-0 z-0" />
+                              
+                              {/* Sliding Text Block with Minimal Arrow */}
+                              <span className="relative z-10 flex items-center justify-center gap-2 transition-transform duration-300 group-hover/btn:scale-105">
+                                Learn More
+                                <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-1 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={2} />
+                              </span>
+                            </Button>
                           </div>
                         </div>
-
-                        {/* New Liquid CTA Button aligned to bottom via mt-auto */}
-                        <div className="mt-auto">
-                          <Button className="group/btn relative overflow-hidden bg-gradient-to-r from-[#3B82F6] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-xl w-full py-3.5 md:py-5 text-xs md:text-sm lg:text-base font-semibold transition-all duration-300 active:scale-95">
-                            {/* Animated Liquid Overlay */}
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#1D4ED8] to-[#1E40AF] transition-all duration-500 ease-out -translate-x-full group-hover/btn:translate-x-0 z-0" />
-                            
-                            {/* Sliding Text Block with Minimal Arrow */}
-                            <span className="relative z-10 flex items-center justify-center gap-2 transition-transform duration-300 group-hover/btn:scale-105">
-                              Learn More
-                              <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-1 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={2} />
-                            </span>
-                          </Button>
-                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
-          </AnimatePresence>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Custom Swiper Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute top-1/2 left-2 lg:-left-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
-            <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
-          </button>
-          <button className="swiper-button-next-custom absolute top-1/2 right-2 lg:-right-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
-            <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
-          </button>
-
-        </div>
+            {/* Custom Swiper Navigation Buttons */}
+            <button className="swiper-button-prev-custom absolute top-1/2 left-2 lg:-left-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
+              <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
+            </button>
+            <button className="swiper-button-next-custom absolute top-1/2 right-2 lg:-right-6 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 lg:bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.08)] lg:shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-600 hover:text-[#3B82F6] hover:scale-105 lg:hover:scale-110 active:scale-95 transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-0">
+              <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
+            </button>
+          </div>
+        ) : (
+          <div className="relative max-w-[1400px] mx-auto px-4 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 min-h-[450px]">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl border border-gray-150 shadow-[0_4px_20px_rgba(0,0,0,0.02)] h-[450px] animate-pulse" />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Global CSS override for Swiper Pagination dots */}

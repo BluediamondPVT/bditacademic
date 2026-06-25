@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Calendar, Clock } from 'lucide-react';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import Clock from 'lucide-react/dist/esm/icons/clock';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -50,44 +51,63 @@ export function Blogs() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header Animation
-      gsap.fromTo(
-        '.blogs-header',
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.blogs-header',
-            start: 'top 90%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
+    let ctx: gsap.Context | null = null;
 
-      // Cards Animation
-      gsap.fromTo(
-        '.blog-card',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.blogs-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }, containerRef);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            ctx = gsap.context(() => {
+              // Header Animation
+              gsap.fromTo(
+                '.blogs-header',
+                { y: 30, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.6,
+                  ease: 'power2.out',
+                  scrollTrigger: {
+                    trigger: '.blogs-header',
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                  },
+                }
+              );
 
-    return () => ctx.revert();
+              // Cards Animation
+              gsap.fromTo(
+                '.blog-card',
+                { y: 50, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  stagger: 0.15,
+                  ease: 'power3.out',
+                  scrollTrigger: {
+                    trigger: '.blogs-grid',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                  },
+                }
+              );
+            }, containerRef);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (
@@ -98,7 +118,7 @@ export function Blogs() {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         
         {/* Section Heading */}
-        <div className="blogs-header text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <div className="blogs-header will-change-transform text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
             Latest Blogs & Articles
           </h2>
@@ -112,7 +132,7 @@ export function Blogs() {
           {blogsData.map((blog) => (
             <div
               key={blog.id}
-              className="blog-card group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out"
+              className="blog-card will-change-transform group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out"
             >
               {/* Blog Image */}
               <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">

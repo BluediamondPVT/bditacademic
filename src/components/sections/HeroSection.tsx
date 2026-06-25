@@ -2,7 +2,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
-import { Send, RefreshCcw, GraduationCap, ChevronDown } from "lucide-react";
+import Send from 'lucide-react/dist/esm/icons/send';
+import RefreshCcw from 'lucide-react/dist/esm/icons/refresh-ccw';
+import GraduationCap from 'lucide-react/dist/esm/icons/graduation-cap';
+import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
 import { Images } from "@/assets";
 import { Button } from "@/components/ui/button";
 import gsap from 'gsap';
@@ -38,21 +41,40 @@ export function HeroSection() {
 
   // 2. GSAP Entrance Animations Setup
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      // Stagger text and pills animation
-      gsap.fromTo(".hero-element", 
-        { y: 40, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.2 }
-      );
+    let ctx: gsap.Context | null = null;
 
-      // Form layout entry animation
-      gsap.fromTo(formRef.current,
-        { x: 50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.6 }
-      );
-    }, containerRef);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            ctx = gsap.context(() => {
+              // Stagger text and pills animation
+              gsap.fromTo(".hero-element", 
+                { y: 40, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.2 }
+              );
 
-    return () => ctx.revert(); // Cleanup on unmount
+              // Form layout entry animation
+              gsap.fromTo(formRef.current,
+                { x: 50, opacity: 0 },
+                { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.6 }
+              );
+            }, containerRef);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   // 3. Form submission handling with captcha verification
@@ -82,7 +104,8 @@ export function HeroSection() {
           src={Images.HeroBanner}
           alt="Students learning online"
           fill
-          priority
+          sizes="100vw"
+          priority={true}
           className="object-cover object-center scale-105" 
           quality={100}
         />
@@ -94,22 +117,22 @@ export function HeroSection() {
         {/* Left Text Column */}
         <div className="text-white max-w-2xl">
           {/* Modern Pill Badge */}
-          <div className="hero-element inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-blue-400/30 bg-blue-500/20 backdrop-blur-md mb-4 md:mb-6">
+          <div className="hero-element will-change-transform inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-blue-400/30 bg-blue-500/20 backdrop-blur-md mb-4 md:mb-6">
             <GraduationCap className="w-4 h-4 text-cyan-300" />
             <span className="text-xs md:text-sm font-semibold tracking-wide text-cyan-100 uppercase">
               Welcome To BDIT Academic
             </span>
           </div>
           
-          <h1 className="hero-element text-3xl md:text-5xl lg:text-7xl font-extrabold leading-[1.15] md:leading-[1.1] mb-4 md:mb-6 tracking-tight">
+          <h1 className="hero-element will-change-transform text-3xl md:text-5xl lg:text-7xl font-extrabold leading-[1.15] md:leading-[1.1] mb-4 md:mb-6 tracking-tight">
             Elevate Your Career with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Top Universities</span>
           </h1>
           
-          <p className="hero-element text-sm md:text-lg text-gray-200 mb-6 md:mb-10 leading-relaxed max-w-xl font-light">
+          <p className="hero-element will-change-transform text-sm md:text-lg text-gray-200 mb-6 md:mb-10 leading-relaxed max-w-xl font-light">
             Upgrade your qualification with UGC Recognised, flexible and affordable online degrees designed for today's fast-growing professional world.
           </p>
           
-          <div className="hero-element flex flex-col sm:flex-row gap-4 font-sans">
+          <div className="hero-element will-change-transform flex flex-col sm:flex-row gap-4 font-sans">
             {/* Primary Button: Liquid Fill & Glow Wave */}
             <Button className="group relative overflow-hidden bg-linear-to-r from-[#3B82F6] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-tr-none rounded-bl-none w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95">
               {/* Animated Liquid Overlay */}
@@ -140,7 +163,7 @@ export function HeroSection() {
         {/* Right Form Column - Premium Glassmorphism UI */}
         <div 
           ref={formRef} 
-          className="w-full max-w-md mx-auto lg:ml-auto bg-white/95 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] p-5 md:p-8 relative overflow-hidden"
+          className="w-full max-w-md mx-auto lg:ml-auto bg-white/95 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] p-5 md:p-8 relative overflow-hidden will-change-transform"
         >
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full blur-[60px] opacity-10 pointer-events-none" />
 

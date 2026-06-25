@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Images } from '@/assets';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import X from 'lucide-react/dist/esm/icons/x';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
@@ -164,7 +164,7 @@ export function Navbar() {
                           href={link.href}
                           onClick={() => setIsOpen(false)}
                           className={cn(
-                            "menu-item-anim opacity-0 text-[16px] font-medium tracking-tight transition-all duration-300 flex items-center justify-between group py-3 px-2 rounded-xl hover:bg-white/5",
+                            "menu-item-anim will-change-transform opacity-0 text-[16px] font-medium tracking-tight transition-all duration-300 flex items-center justify-between group py-3 px-2 rounded-xl hover:bg-white/5",
                             isActive ? "text-cyan-400 bg-white/5" : "text-white/80 hover:text-white"
                           )}
                         >

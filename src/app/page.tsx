@@ -1,11 +1,23 @@
-import { HeroSection } from "@/components/sections/HeroSection";
-// Future imports
-import {ProgramsSection}  from "@/components/sections/ProgramsSection";
+'use client';
+
 import { ExpertsSection } from "@/components/sections/ExpertsSection";
 import WhatWeOffer from "@/components/sections/WhatWeOffer";
 import RankedInstitutes from "@/components/sections/RankedInstitutes";
 import { Blogs } from "@/components/sections/Blogs";
-import { EnquiryHome } from "@/components/sections/EnquiryHome";
+import dynamic from "next/dynamic";
+
+const HeroSection = dynamic(() => import("@/components/sections/HeroSection").then((mod) => mod.HeroSection), {
+  ssr: false,
+  loading: () => <div className="min-h-[90vh] bg-[#031B33] w-full" />,
+});
+const ProgramsSection = dynamic(() => import("@/components/sections/ProgramsSection").then((mod) => mod.ProgramsSection), {
+  ssr: false,
+  loading: () => <div className="min-h-[600px] md:min-h-[750px] bg-slate-50 w-full animate-pulse" />,
+});
+const EnquiryHome = dynamic(() => import("@/components/sections/EnquiryHome").then((mod) => mod.EnquiryHome), {
+  ssr: false,
+  loading: () => <div className="min-h-[550px] md:min-h-[750px] bg-[#F4F7F9] w-full animate-pulse" />,
+});
 
 export default function Home() {
   return (

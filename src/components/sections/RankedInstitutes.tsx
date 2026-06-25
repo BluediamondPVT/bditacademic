@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Images } from '../../assets';
@@ -39,44 +40,63 @@ export default function RankedInstitutes() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header entrance animation
-      gsap.fromTo(
-        '.ranked-title-block',
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
+    let ctx: gsap.Context | null = null;
 
-      // Slider cards stagger entry
-      gsap.fromTo(
-        '.swiper-slide',
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.08,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.ranked-slider-trigger',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }, containerRef);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            ctx = gsap.context(() => {
+              // Header entrance animation
+              gsap.fromTo(
+                '.ranked-title-block',
+                { y: 30, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  ease: 'power3.out',
+                  scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                  },
+                }
+              );
 
-    return () => ctx.revert();
+              // Slider cards stagger entry
+              gsap.fromTo(
+                '.swiper-slide',
+                { y: 40, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  stagger: 0.08,
+                  ease: 'power3.out',
+                  scrollTrigger: {
+                    trigger: '.ranked-slider-trigger',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                  },
+                }
+              );
+            }, containerRef);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (
@@ -98,7 +118,7 @@ export default function RankedInstitutes() {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         
         {/* Section Heading Block */}
-        <div className="ranked-title-block text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <div className="ranked-title-block will-change-transform text-center max-w-3xl mx-auto mb-12 md:mb-16">
           {/* Badge */}
           <div className="flex justify-center mb-4">
             <div className="inline-flex items-center text-[10px] md:text-xs font-extrabold uppercase tracking-widest text-[#3B82F6]">
@@ -135,7 +155,7 @@ export default function RankedInstitutes() {
             className="py-4 px-1" // prevents clip of card hover shadow
           >
             {universities.map((uni) => (
-              <SwiperSlide key={uni.id} className="py-2">
+              <SwiperSlide key={uni.id} className="py-2 will-change-transform">
                 {/* University Logo Card with Hover highlight border/glow */}
                 <div className="bg-white rounded-2xl border border-slate-150 p-2 flex items-center justify-center aspect-4/3 relative transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-[#406094] hover:scale-105 hover:shadow-[0_10px_30px_rgba(59,130,246,0.12)] cursor-pointer group/card">
                   <div className="relative w-full h-full flex items-center justify-center">

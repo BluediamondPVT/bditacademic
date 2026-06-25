@@ -23,26 +23,45 @@ export function ExpertsSection() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.expert-card',
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.experts-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }, containerRef);
+    let ctx: gsap.Context | null = null;
 
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            ctx = gsap.context(() => {
+              gsap.fromTo(
+                '.expert-card',
+                { y: 60, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  stagger: 0.1,
+                  ease: 'power3.out',
+                  scrollTrigger: {
+                    trigger: '.experts-grid',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                  },
+                }
+              );
+            }, containerRef);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (
@@ -73,7 +92,7 @@ export function ExpertsSection() {
                 onClick={() => setActiveId(isActive ? null : expert.id)}
                 onMouseEnter={() => setActiveId(expert.id)}
                 onMouseLeave={() => setActiveId(null)}
-                className="expert-card group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 ease-out select-none"
+                className="expert-card will-change-transform group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 ease-out select-none"
               >
                 {/* Background State Layer */}
                 <div 

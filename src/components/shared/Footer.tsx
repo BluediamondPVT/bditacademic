@@ -4,14 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Images } from "@/assets";
-import { 
-  ChevronRight, 
-  MapPin, 
-  Phone, 
-  Mail,
-  PhoneCall,
-  MessageCircle
-} from 'lucide-react';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import PhoneCall from 'lucide-react/dist/esm/icons/phone-call';
 
 const programs = [
   { name: 'Bachelor of Computer Applications', href: '#' },
@@ -56,21 +53,21 @@ export function Footer() {
                   className="object-contain "
                 />
               </Link>
-              <p className="text-sm leading-relaxed mb-6 text-gray-400 pe-4">
+              <p className="text-sm leading-relaxed mb-6 text-gray-300 pe-4">
                 Empowering students with world-class education from top-ranked universities. Your journey to success starts here.
               </p>
               {/* Native SVG Social Icons (Fix for Lucide-React removed brand icons) */}
               <div className="flex items-center gap-3">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white">
+                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white" aria-label="Facebook">
                   <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white">
+                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white" aria-label="Twitter">
                   <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white">
+                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white" aria-label="Instagram">
                   <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white">
+                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3B82F6] hover:border-[#3B82F6] transition-all duration-300 text-white" aria-label="LinkedIn">
                   <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
               </div>
@@ -82,8 +79,8 @@ export function Footer() {
               <ul className="space-y-3">
                 {programs.map((item, idx) => (
                   <li key={idx}>
-                    <Link href={item.href} className="group flex items-start gap-2 text-sm text-gray-400 hover:text-[#3B82F6] transition-colors">
-                      <ChevronRight className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5 transition-transform group-hover:translate-x-1" />
+                    <Link href={item.href} className="group flex items-start gap-2 text-sm text-gray-300 hover:text-[#60A5FA] transition-colors">
+                      <ChevronRight className="w-4 h-4 text-[#60A5FA] shrink-0 mt-0.5 transition-transform group-hover:translate-x-1" />
                       <span>{item.name}</span>
                     </Link>
                   </li>
@@ -97,8 +94,8 @@ export function Footer() {
               <ul className="space-y-3">
                 {quickLinks.map((item, idx) => (
                   <li key={idx}>
-                    <Link href={item.href} className="group flex items-center gap-2 text-sm text-gray-400 hover:text-[#3B82F6] transition-colors">
-                      <ChevronRight className="w-4 h-4 text-[#3B82F6] shrink-0 transition-transform group-hover:translate-x-1" />
+                    <Link href={item.href} className="group flex items-center gap-2 text-sm text-gray-300 hover:text-[#60A5FA] transition-colors">
+                      <ChevronRight className="w-4 h-4 text-[#60A5FA] shrink-0 transition-transform group-hover:translate-x-1" />
                       <span>{item.name}</span>
                     </Link>
                   </li>
@@ -110,23 +107,23 @@ export function Footer() {
             <div>
               <h3 className="text-lg font-bold text-white mb-6">Contact Us</h3>
               <ul className="space-y-5">
-                <li className="flex items-start gap-4 text-sm text-gray-400">
-                  <MapPin className="w-5 h-5 text-[#3B82F6] shrink-0 mt-1" />
+                <li className="flex items-start gap-4 text-sm text-gray-300">
+                  <MapPin className="w-5 h-5 text-[#60A5FA] shrink-0 mt-1" />
                   <p className="leading-relaxed">
                     106/C, 1st floor, Building #6, Sector 3, Millennium Business Park, Mahape, Navi Mumbai 400710
                   </p>
                 </li>
-                <li className="flex items-center gap-4 text-sm text-gray-400">
-                  <Phone className="w-5 h-5 text-[#3B82F6] shrink-0" />
+                <li className="flex items-center gap-4 text-sm text-gray-300">
+                  <Phone className="w-5 h-5 text-[#60A5FA] shrink-0" />
                   <p>+91 70452 29016</p>
                 </li>
-                <li className="flex items-center gap-4 text-sm text-gray-400">
-                  <PhoneCall className="w-5 h-5 text-[#3B82F6] shrink-0" />
+                <li className="flex items-center gap-4 text-sm text-gray-300">
+                  <PhoneCall className="w-5 h-5 text-[#60A5FA] shrink-0" />
                   <p>+91 22 4667 6425</p>
                 </li>
-                <li className="flex items-center gap-4 text-sm text-gray-400">
-                  <Mail className="w-5 h-5 text-[#3B82F6] shrink-0" />
-                  <a href="mailto:info@bditAcademic.com" className="hover:text-[#3B82F6] transition-colors">
+                <li className="flex items-center gap-4 text-sm text-gray-300">
+                  <Mail className="w-5 h-5 text-[#60A5FA] shrink-0" />
+                  <a href="mailto:info@bditAcademic.com" className="hover:text-[#60A5FA] transition-colors">
                     info@bditAcademic.com
                   </a>
                 </li>
@@ -139,10 +136,10 @@ export function Footer() {
         {/* Bottom Bar: Copyright & Legal */}
         <div className="border-t border-white/10 bg-[#1A1A1A] py-6">
           <div className="container mx-auto px-4 md:px-8 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-500 text-center md:text-left">
+            <p className="text-sm text-gray-400 text-center md:text-left">
               © {new Date().getFullYear()} <span className="text-[#3B82F6] font-semibold">BDIT Academic</span>. All Rights Reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
+            <div className="flex items-center gap-6 text-sm text-gray-400">
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
             </div>

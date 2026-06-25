@@ -3,13 +3,18 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Poppins } from "next/font/google"; 
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
-import { SmoothScroll } from "@/components/sections/SmoothScroll"
-import { Footer } from "@/components/shared/Footer";
+import { SmoothScroll } from "@/components/sections/SmoothScroll";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import("@/components/shared/Footer").then((mod) => mod.Footer), {
+  loading: () => <div className="min-h-[400px] bg-[#222222] w-full" />,
+});
 
 // Font setup
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  weight: ["400", "600", "700"],
   variable: "--font-jakarta",
 });
 
@@ -17,7 +22,8 @@ const jakarta = Plus_Jakarta_Sans({
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  weight: ["400", "600", "700"],
   variable: "--font-poppins", // Unique variable for poppins
 });
 
