@@ -19,6 +19,7 @@ import Pgdba from '../../public/images/ugpg-images/pgdba.webp';
 import Pgdca from '../../public/images/ugpg-images/pgdca.webp';
 import LagecyBg from '../../public/images/lagecy-bg.png';
 
+
 export const Images = {
   Logo,
   HeroBanner,

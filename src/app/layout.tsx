@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
 import { SmoothScroll } from "@/components/sections/SmoothScroll"
+import { Footer } from "@/components/shared/Footer";
 
 // Font setup
 const jakarta = Plus_Jakarta_Sans({
@@ -12,11 +13,14 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
 });
 
+
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins", // Unique variable for poppins
 });
+
 
 export const metadata: Metadata = {
   title: "BDIT Academic | Premium Education",
@@ -37,6 +41,7 @@ export default function RootLayout({
           <main className="flex-1"> 
             {children}
           </main>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

@@ -2,6 +2,21 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* --- Custom Scrollbar Styling --- */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #34485b;
+}
+
+::-webkit-scrollbar-thumb { 
+  background: linear-gradient(to top, #082130, #0b72b9);
+  border-radius: 5px;
+}
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -128,3 +143,4 @@
     @apply font-sans;
   }
 }
+
