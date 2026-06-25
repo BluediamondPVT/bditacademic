@@ -1,0 +1,136 @@
+{
+  "ug": [
+    {
+      "id": 1,
+      "type": "Online BBA Degree",
+      "title": "Bachelor of Business Administration",
+      "duration": "3 Years | 6 Semesters",
+      "eligibility": "Passed 10+2 from a recognized board (any stream) with a minimum of 45% aggregate marks for General category and 40% for SC/ST/OBC category candidates.",
+      "image": "/images/ugpg-images/bba.webp"
+    },
+    {
+      "id": 2,
+      "type": "Online BCom Degree",
+      "title": "Bachelor of Commerce",
+      "duration": "3 Years | 6 Semesters",
+      "eligibility": "Passed 10+2 from a recognized board (any stream) with a minimum of 45% aggregate marks for General category and 40% for SC/ST/OBC category candidates.",
+      "image": "/images/ugpg-images/bcom.webp"
+    },
+    {
+      "id": 3,
+      "type": "Online BA Degree",
+      "title": "Bachelor of Arts",
+      "duration": "3 Years | 6 Semesters",
+      "eligibility": "Passed 10+2 from a recognized board (any stream) with a minimum of 45% aggregate marks for General category and 40% for SC/ST/OBC category candidates.",
+      "image": "/images/ugpg-images/ba.webp"
+    },
+    {
+      "id": 4,
+      "type": "Online BSc Degree",
+      "title": "Bachelor of Science",
+      "duration": "3 Years | 6 Semesters",
+      "eligibility": "Passed 10+2 from a recognized board (any stream) with a minimum of 45% aggregate marks for General category and 40% for SC/ST/OBC category candidates.",
+      "image": "/images/ugpg-images/bsc.webp"
+    },
+    {
+      "id": 5,
+      "type": "Online BCA Degree",
+      "title": "Bachelor of Computer Applications",
+      "duration": "3 Years | 6 Semesters",
+      "eligibility": "Passed 10+2 from a recognized board (any stream) with a minimum of 45% aggregate marks for General category and 40% for SC/ST/OBC category candidates.",
+      "image": "/images/ugpg-images/bca.webp"
+    }
+  ],
+  "pg": [
+    {
+      "id": 6,
+      "type": "Online MBA Degree",
+      "title": "Master of Business Administration",
+      "duration": "2 Years | 4 Semesters",
+      "eligibility": "Graduation in any discipline with a minimum of 40% marks in the final qualifying examination. Candidates securing less than 40% may appear for an eligibility test; admission will be granted upon successfully clearing the test",
+      "image": "/images/ugpg-images/mba.webp"
+    },
+    {
+      "id": 7,
+      "type": "Online MCA Degree",
+      "title": "Master of Computer Applications",
+      "duration": "2 Years | 4 Semesters",
+      "eligibility": "Bachelor of Computer Applications (BCA) Bachelor’s Degree in Computer Science / Engineering Bachelor's Degree in Science / Commerce / Arts with Mathematics",
+      "image": "/images/ugpg-images/mca.webp"
+    },
+    {
+      "id": 8,
+      "type": "Online MA Degree",
+      "title": "Master of Arts",
+      "duration": "2 Years | 4 Semesters",
+      "eligibility": "Graduation completing Degree (3 years or 4 years Degree Program)",
+      "image": "/images/ugpg-images/ma.webp"
+    },
+    {
+      "id": 9,
+      "type": "Online MCom Degree",
+      "title": "Master of Commerce",
+      "duration": "2 Years | 4 Semesters",
+      "eligibility": "Graduation Degree (3 years or 4 years Degree Program)",
+      "image": "/images/ugpg-images/mcom.webp"
+    },
+    {
+      "id": 10,
+      "type": "Online Msc Degree",
+      "title": "Master of Science",
+      "duration": "2 Years | 4 Semesters",
+      "eligibility": "Bachelor's degree in any Science discipline.",
+      "image": "/images/ugpg-images/msc.webp"
+    }
+  ],
+  "diploma": [
+    {
+      "id": 11,
+      "type": "Online DBA Degree",
+      "title": "Diploma in Business administration (DBA)",
+      "duration": "1 Year",
+      "eligibility": "10+2 Education from any recognised board.",
+      "image": "/images/ugpg-images/dba.webp"
+    },
+    {
+      "id": 12,
+      "type": "Online DCA Degree",
+      "title": "Diploma in Computer Application (DCA)",
+      "duration": "1 Year",
+      "eligibility": "10+2 Education from any recognised board.",
+      "image": "/images/ugpg-images/dca.webp"
+    },
+    {
+      "id": 13,
+      "type": "Online (PCM / PCB / ZBC) Degree",
+      "title": "Diploma in Basic Science (PCM / PCB / ZBC)",
+      "duration": "1 Year",
+      "eligibility": "10+2 Education from any recognised board.",
+      "image": "/images/ugpg-images/pcm-pcb-zbc.webp"
+    },
+    {
+      "id": 14,
+      "type": "Online PGDCA Degree",
+      "title": "PG Diploma in Computer Application (PGDCA)",
+      "duration": "1 Year",
+      "eligibility": "10+2 and Graduation Degree from any recognised board",
+      "image": "/images/ugpg-images/pgdca.webp"
+    },
+    {
+      "id": 15,
+      "type": "Online PGDBA Degree",
+      "title": "PG Diploma in Business Administration (PGDBA)",
+      "duration": "1 Year",
+      "eligibility": "10+2 and Graduation Degree from any recognised board",
+      "image": "/images/ugpg-images/pgdba.webp"
+    },
+    {
+      "id": 16,
+      "type": "Online DFA Degree",
+      "title": "PG Diploma in Accounts and Finance",
+      "duration": "1 Year",
+      "eligibility": "10+2 and Graduation Degree from any recognised board",
+      "image": "/images/ugpg-images/pg.webp"
+    }
+  ]
+}

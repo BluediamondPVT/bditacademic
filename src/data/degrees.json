@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "bba",
+    "title": "Bachelor of Business Administration (BBA)",
+    "duration": "3 Years",
+    "eligibility": "12th Pass with minimum 50%",
+    "description": "Gain core business skills and leadership qualities with our premium BBA program.",
+    "imageKey": "BBA"
+  },
+  {
+    "slug": "bcom",
+    "title": "Bachelor of Commerce (BCom)",
+    "duration": "3 Years",
+    "eligibility": "12th Pass in Commerce/Science",
+    "description": "Master financial accounting, auditing, and business economics.",
+    "imageKey": "BCOM"
+  }
+]

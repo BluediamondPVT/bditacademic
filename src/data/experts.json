@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Waseem Siddiqui",
+    "position": "Academic Operations Director",
+    "image": "/images/our-teams/1.jpg"
+  },
+  { 
+    "id": 2,
+    "name": "Amit Shrivastav",
+    "position": "Admissions & Counselling Head",
+    "image": "/images/our-teams/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "POOJA SHANI",
+    "position": "Senior Academic Counsellor",
+    "image": "/images/our-teams/3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "MR SAMEER",
+    "position": "Student Relationship Manager",
+    "image": "/images/our-teams/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "KOMAL KANSAL",
+    "position": "University Coordination Manager",
+    "image": "/images/our-teams/5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Fardeen Peer",
+    "position": "Documentation & Verification Officer",
+    "image": "/images/our-teams/6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "ANITA ASWAL",
+    "position": "Academic Counsellor",
+    "image": "/images/our-teams/7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "SIDDHARTH PATIL",
+    "position": "Back-Office & Operations Officer",
+    "image": "/images/our-teams/8.jpg"
+  }
+]
