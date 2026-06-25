@@ -24,6 +24,18 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "BDIT Academic | Premium Education",
+   icons: {
+    icon: [
+      { url: '/fav.png' },
+      { url: '/fav.png', type: 'image/png', sizes: '32x32' },
+      { url: '/fav.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/fav.png' },
+      { url: '/fav.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/fav.png'],
+  },
   description: "BDIT Academic is a platform for students and faculty to access academic resources, manage coursework, and collaborate on projects.",
 };
 
