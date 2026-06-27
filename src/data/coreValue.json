@@ -1,0 +1,42 @@
+[
+  {
+    "icon": "ShieldCheck",
+    "title": "Academic Integrity",
+    "description": "We uphold the highest standards of honesty, transparency, and regulatory compliance in all academic and operational processes."
+  },
+  {
+    "icon": "HeartHandshake",
+    "title": "Student-Centric Approach",
+    "description": "Learner success is central to everything we do—from counseling and admissions to academic support and program completion."
+  },
+  {
+    "icon": "Award",
+    "title": "Excellence in Education",
+    "description": "We collaborate exclusively with reputed institutions that demonstrate academic rigor, global recognition, and quality assurance."
+  },
+  {
+    "icon": "Banknote",
+    "title": "Accessibility & Affordability",
+    "description": "We believe quality education should be financially attainable, without compromising academic standards or institutional credibility."
+  },
+  {
+    "icon": "Handshake",
+    "title": "Ethical Partnerships",
+    "description": "Our university and institutional collaborations are built on trust, compliance, mutual respect, and long-term value creation."
+  },
+  {
+    "icon": "Briefcase",
+    "title": "Career & Outcome Focus",
+    "description": "Beyond degrees, we emphasize employability, career awareness, and alignment with real-world professional expectations."
+  },
+  {
+    "icon": "LifeBuoy",
+    "title": "Continuous Support",
+    "description": "We provide end-to-end assistance—academic, administrative, and advisory—ensuring learners are supported throughout their journey."
+  },
+  {
+    "icon": "BadgeCheck",
+    "title": "Accountability & Trust",
+    "description": "We take responsibility for our commitments, fostering long-term confidence among students, universities, and global partners."
+  }
+]

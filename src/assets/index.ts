@@ -17,13 +17,15 @@ import PcmPcbZbc from '../../public/images/ugpg-images/pcm-pcb-zbc.webp';
 import Pg from '../../public/images/ugpg-images/pg.webp';
 import Pgdba from '../../public/images/ugpg-images/pgdba.webp';
 import Pgdca from '../../public/images/ugpg-images/pgdca.webp';
-import LagecyBg from '../../public/images/lagecy-bg.png';
+import LagecyBg from '../../public/images/about-teams.webp';
+import Owner from '../../public/images/owner.webp'
 
 
 export const Images = {
   Logo,
   HeroBanner,
   LagecyBg,
+  Owner,
   CourseImages: {
     Ba,
     Bba,
