@@ -1,18 +1,27 @@
 'use client';
 
-import { ExpertsSection } from "@/components/sections/ExpertsSection";
-import WhatWeOffer from "@/components/sections/WhatWeOffer";
-import RankedInstitutes from "@/components/sections/RankedInstitutes";
-import { Blogs } from "@/components/sections/Blogs";
+import { HeroSection } from "@/components/sections/HeroSection";
 import dynamic from "next/dynamic";
 
-const HeroSection = dynamic(() => import("@/components/sections/HeroSection").then((mod) => mod.HeroSection), {
-  ssr: false,
-  loading: () => <div className="min-h-[90vh] bg-[#031B33] w-full" />,
-});
 const ProgramsSection = dynamic(() => import("@/components/sections/ProgramsSection").then((mod) => mod.ProgramsSection), {
   ssr: false,
   loading: () => <div className="min-h-[600px] md:min-h-[750px] bg-slate-50 w-full animate-pulse" />,
+});
+const ExpertsSection = dynamic(() => import("@/components/sections/ExpertsSection").then((mod) => mod.ExpertsSection), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white w-full animate-pulse" />,
+});
+const WhatWeOffer = dynamic(() => import("@/components/sections/WhatWeOffer"), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-gray-100 w-full animate-pulse" />,
+});
+const RankedInstitutes = dynamic(() => import("@/components/sections/RankedInstitutes"), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white w-full animate-pulse" />,
+});
+const Blogs = dynamic(() => import("@/components/sections/Blogs").then((mod) => mod.Blogs), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-gray-100 w-full animate-pulse" />,
 });
 const EnquiryHome = dynamic(() => import("@/components/sections/EnquiryHome").then((mod) => mod.EnquiryHome), {
   ssr: false,

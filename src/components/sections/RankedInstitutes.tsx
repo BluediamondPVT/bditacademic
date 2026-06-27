@@ -165,6 +165,7 @@ export default function RankedInstitutes() {
                       fill
                       sizes="(max-width: 640px) 120px, 180px"
                       className="object-contain p-1 filter contrast-[1.02] transition-transform duration-300 group-hover/card:scale-105"
+                      quality={75}
                     />
                   </div>
                 </div>

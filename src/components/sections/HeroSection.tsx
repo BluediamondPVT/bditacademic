@@ -104,10 +104,10 @@ export function HeroSection() {
           src={Images.HeroBanner}
           alt="Students learning online"
           fill
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw"
           priority={true}
           className="object-cover object-center scale-105" 
-          quality={100}
+          quality={80}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#031B33]/95 via-[#0A3D66]/80 to-transparent"></div>
       </div>

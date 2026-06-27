@@ -156,6 +156,7 @@ export function EnquiryHome() {
                           fill
                           sizes="(max-width: 768px) 56px, 96px"
                           className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          quality={75}
                         />
                       </div>
                     </div>
@@ -185,6 +186,7 @@ export function EnquiryHome() {
                           fill
                           sizes="(max-width: 768px) 56px, 96px"
                           className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          quality={75}
                         />
                       </div>
                     </div>
@@ -199,9 +201,9 @@ export function EnquiryHome() {
                     src="/images/universities/amity.png"
                     alt="Amity University"
                     fill
-                    sizes="(max-width: 768px) 96px, 176px"
+                    sizes="(max-width: 768px) 64px, 128px"
                     className="object-contain"
-                    priority
+                    quality={75}
                   />
                 </div>
               </div>

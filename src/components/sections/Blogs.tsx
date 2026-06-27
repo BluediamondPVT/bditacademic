@@ -140,9 +140,9 @@ export function Blogs() {
                   src={blog.image}
                   alt={blog.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  priority={blog.id === 1}
+                  quality={75}
                 />
               </div>
 
