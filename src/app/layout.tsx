@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Poppins } from "next/font/google"; 
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
-import { SmoothScroll } from "@/components/sections/SmoothScroll";
+// import { SmoothScroll } from "@/components/sections/SmoothScroll";
 import dynamic from "next/dynamic";
 
 const Footer = dynamic(() => import("@/components/shared/Footer").then((mod) => mod.Footer), {
@@ -91,14 +91,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${poppins.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
-        <SmoothScroll>
+        {/* <SmoothScroll> */}
           <Navbar />
           {/* Yahan se pt-24 hata diya hai taaki image top se shuru ho */}
           <main className="flex-1"> 
             {children}
           </main>
           <Footer />
-        </SmoothScroll>
+        {/* </SmoothScroll> */}
       </body>
     </html>
   );
