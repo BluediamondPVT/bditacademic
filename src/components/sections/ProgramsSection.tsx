@@ -80,14 +80,14 @@ export function ProgramsSection() {
                   onMouseEnter={() => setHoveredTab(tab.id)}
                   className={cn(
                     "relative px-4 md:px-8 py-2 md:py-3 text-[11px] md:text-sm font-bold rounded-full transition-colors duration-300 outline-none",
-                    isActive ? "text-white" : "text-gray-500 hover:text-[#3B82F6]"
+                    isActive ? "text-white" : "text-gray-500 hover:text-[#1D4ED8]"
                   )}
                 >
                   {/* Solid Active Pill */}
                   {isActive && (
                     <motion.div
                       layoutId="activeProgramTab"
-                      className="absolute inset-0 bg-[#3B82F6] rounded-full shadow-md -z-20"
+                      className="absolute inset-0 bg-[#1D4ED8] rounded-full shadow-md -z-20"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -179,7 +179,7 @@ export function ProgramsSection() {
 
                           {/* New Liquid CTA Button aligned to bottom via mt-auto */}
                           <div className="mt-auto">
-                            <Button className="group/btn relative overflow-hidden bg-gradient-to-r from-[#3B82F6] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-xl w-full py-3.5 md:py-5 text-xs md:text-sm lg:text-base font-semibold transition-all duration-300 active:scale-95">
+                            <Button className="group/btn relative overflow-hidden bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-xl w-full py-3.5 md:py-5 text-xs md:text-sm lg:text-base font-semibold transition-all duration-300 active:scale-95">
                               {/* Animated Liquid Overlay */}
                               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#1D4ED8] to-[#1E40AF] transition-all duration-500 ease-out -translate-x-full group-hover/btn:translate-x-0 z-0" />
                               
@@ -224,7 +224,7 @@ export function ProgramsSection() {
       {/* Global CSS override for Swiper Pagination dots */}
       <style dangerouslySetInnerHTML={{__html: `
         .swiper-pagination-bullet { background: #E2E8F0; opacity: 1; width: 8px; height: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .swiper-pagination-bullet-active { background: #3B82F6; width: 22px; border-radius: 9999px; }
+        .swiper-pagination-bullet-active { background: #1D4ED8; width: 22px; border-radius: 9999px; }
       `}} />
     </section>
   );

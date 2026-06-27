@@ -10,7 +10,12 @@ import X from 'lucide-react/dist/esm/icons/x';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const DesktopNav = dynamic(() => import('./DesktopNav').then((mod) => mod.DesktopNav), {
+  ssr: false,
+  loading: () => <div className="hidden lg:block w-[400px] h-10 bg-white/5 animate-pulse rounded-full" />,
+});
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -26,9 +31,6 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  
-  // Track hovered item for sticky sliding animation
-  const [hoveredPath, setHoveredPath] = React.useState<string | null>(null);
   
   const pathname = usePathname();
   const menuContainerRef = React.useRef<HTMLDivElement>(null);
@@ -71,53 +73,14 @@ export function Navbar() {
             alt="BDIT Academic Logo" 
             width={260} 
             height={80} 
+            sizes="(max-width: 768px) 350px, 640px"
             className="object-contain h-12 md:h-16 w-auto" 
             priority
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div 
-          className="hidden lg:flex items-center justify-center gap-1 font-sans bg-white/5 p-1.5 rounded-full border border-white/5 relative"
-          onMouseLeave={() => setHoveredPath(null)} // Mouse hatne par hover effect reset
-        >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href === '/' && pathname === '');
-            const isHovered = hoveredPath === link.name;
-            
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onMouseEnter={() => setHoveredPath(link.name)} // Hover track karne ke liye
-                className={cn(
-                  "font-semibold text-[14px] px-5 py-2.5 rounded-full transition-colors duration-300 relative tracking-wide outline-none z-10",
-                  isActive ? "text-[#031B33]" : "text-white/70 hover:text-white"
-                )}
-              >
-                {/* 1. Active Page Solid Pill Background */}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeNavigationPill"
-                    className="absolute inset-0 bg-white rounded-full -z-20 shadow-sm"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-
-                {/* 2. Magnetic Sliding Hover Pill (Yehi hai wo "sticky" effect) */}
-                {isHovered && !isActive && (
-                  <motion.div
-                    layoutId="hoverNavigationPill"
-                    className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-full -z-10"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-                
-                <span className="relative z-10">{link.name}</span>
-              </Link>
-            );
-          })}
-        </div>
+        <DesktopNav pathname={pathname} navLinks={navLinks} />
 
         {/* Mobile Menu Trigger & Fullscreen Drawer */}
         <div className="lg:hidden">
@@ -143,7 +106,7 @@ export function Navbar() {
                 <div>
                   <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
                     <div className="flex items-center">
-                      <Image alt="BDIT Academic Logo" className="object-contain h-10 w-auto" height={60} priority src={Images.Logo} width={180}/>
+                      <Image alt="BDIT Academic Logo" className="object-contain h-10 w-auto" height={60} sizes="(max-width: 768px) 350px, 640px" priority src={Images.Logo} width={180}/>
                     </div>
                     <SheetClose asChild>
                       <button 

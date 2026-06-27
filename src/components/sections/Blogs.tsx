@@ -176,7 +176,7 @@ export function Blogs() {
                   </div>
 
                   {/* Read More Button */}
-                  <button className="bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold py-2.5 px-6 rounded-lg text-sm transition-all duration-300 hover:shadow-[0_4px_12px_rgba(59,130,246,0.25)] select-none">
+                  <button className="bg-[#1D4ED8] hover:bg-[#1E40AF] text-white font-semibold py-2.5 px-6 rounded-lg text-sm transition-all duration-300 hover:shadow-[0_4px_12px_rgba(59,130,246,0.25)] select-none">
                     Read More
                   </button>
                 </div>

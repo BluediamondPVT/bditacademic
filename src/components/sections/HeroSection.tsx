@@ -134,7 +134,7 @@ export function HeroSection() {
           
           <div className="hero-element will-change-transform flex flex-col sm:flex-row gap-4 font-sans">
             {/* Primary Button: Liquid Fill & Glow Wave */}
-            <Button className="group relative overflow-hidden bg-linear-to-r from-[#3B82F6] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-tr-none rounded-bl-none w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95">
+            <Button className="group relative overflow-hidden bg-linear-to-r from-[#2563EB] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-tr-none rounded-bl-none w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95">
               {/* Animated Liquid Overlay */}
               <span className="absolute inset-0 w-full h-full bg-linear-to-r from-[#1D4ED8] to-[#1E40AF] transition-all duration-500 ease-out -translate-x-full group-hover:translate-x-0 z-0" />
               
@@ -167,9 +167,9 @@ export function HeroSection() {
         >
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full blur-[60px] opacity-10 pointer-events-none" />
 
-          <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight">
-            Speak With Our <span className="text-[#3B82F6]">Experts</span>
-          </h3>
+          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight">
+            Speak With Our <span className="text-[#1D4ED8]">Experts</span>
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 relative z-10 font-sans">
             
@@ -268,7 +268,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white rounded-xl py-3.5 md:py-5 text-sm md:text-base flex items-center justify-center gap-2 mt-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.99] hover:-translate-y-0.5">
+            <Button type="submit" className="w-full bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-xl py-3.5 md:py-5 text-sm md:text-base flex items-center justify-center gap-2 mt-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.99] hover:-translate-y-0.5">
               Submit Request <Send className="w-4 h-4 ml-1" />
             </Button>
           </form>
