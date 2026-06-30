@@ -12,11 +12,11 @@ const StrategicPartnerships = () => {
             Strategic Academic Partnerships
           </h2>
           
-          <p className="text-gray-800 mb-6 text-sm font-medium">
+          <p className="text-gray-800 mb-6 text-xs md:text-sm font-medium">
             Collaborations rooted in credibility and compliance
           </p> 
 
-          <p className="text-gray-700 leading-relaxed text-sm max-w-3xl">
+          <p className="text-gray-700 leading-relaxed text-xs md:text-base max-w-3xl">
             BDIT Academic operates as an authorized representative and franchise partner for leading UGC-recognized, NAAC A+ accredited universities with strong national and global standing. Our partnership framework is designed to uphold university standards while extending their academic reach through ethical, transparent, and compliant processes.
           </p>
         </div> 
