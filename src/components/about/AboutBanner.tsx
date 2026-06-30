@@ -14,7 +14,7 @@ const AboutBanner = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-sans">
           About BDIT Academic
         </h1>
-        <p className="max-w-2xl text-sm md:text-base font-medium ">
+        <p className="max-w-2xl text-xs md:text-base font-medium ">
           Empowering learners through credible, flexible, and globally recognized higher education.
         </p>
       </div>

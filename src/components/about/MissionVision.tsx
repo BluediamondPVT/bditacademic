@@ -20,7 +20,7 @@ const MissionVision = () => {
               A clear direction for long-term academic impact.
             </p>
             
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+            <p className="text-gray-600 text-xs md:text-base leading-relaxed ">
               Our Vision is to become a trusted global education partner by enabling access to recognized, technology-driven higher education that supports academic excellence, professional advancement, and lifelong learning. We aim to create an ecosystem where learners from diverse backgrounds can pursue credible qualifications without barriers of geography, affordability, or time.
             </p>
           </div>
@@ -38,7 +38,7 @@ const MissionVision = () => {
               Purpose-driven actions that deliver measurable outcomes.
             </p>
             
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+            <p className="text-gray-600 text-xs md:text-base leading-relaxed">
               Our Mission is to deliver UGC-approved, NAAC-accredited online degree programs through strong academic partnerships, while making higher education accessible, affordable, and flexible. We are committed to providing structured academic counseling, continuous learner support, and ethical practices that bridge the gap between formal education and industry relevance.
             </p>
           </div>

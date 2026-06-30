@@ -32,7 +32,7 @@ const CoreValues = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-[#031B33] mb-3">
           Core Values
         </h2>
-        <p className="text-gray-500 mb-12">
+        <p className="text-gray-800 text-sm mb-12">
           The spirit driving BDIT Academic
         </p>
 
@@ -40,10 +40,10 @@ const CoreValues = () => {
           {coreValuesData.map((value, index) => {
             const IconComponent = iconMap[value.icon];
             return (
-              <div key={index} className="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
+              <div key={index} className="p-5 border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
                 {IconComponent && <IconComponent className="w-10 h-10 text-[#0373C3] mb-4" strokeWidth={1.5} />}
                 <h3 className="text-xl font-bold text-[#031B33] mb-3">{value.title}</h3>
-                <p className="text-gray-600 text-sm">{value.description}</p>
+                <p className="text-gray-700 text-xs md:text-base">{value.description}</p>
               </div>
             );
           })}

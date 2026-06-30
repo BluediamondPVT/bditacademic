@@ -29,10 +29,10 @@ const OurLegacy = () => {
               Built on experience, strengthened by outcomes
             </p>
             
-            <p className="text-gray-800 mb-4 text-sm leading-relaxed">
+            <p className="text-gray-800 mb-4 text-xs   md:text-base leading-relaxed">
              With over a decade of experience in education, skill development, and student mentoring, BDIT Edutech Pvt. Ltd. has played a significant role in shaping career pathways for thousands of learners. Our background includes delivering skill-based programs and supporting large-scale student job placement initiatives across multiple sectors.
             </p>
-            <p className="text-gray-800 text-sm leading-relaxed">
+            <p className="text-gray-800 text-xs  md:text-base leading-relaxed">
              This strong foundation enables BDIT Academic to combine academic education with practical career guidance, ensuring students are not only qualified but also industry-aware and future-ready.
             </p>
           </div>

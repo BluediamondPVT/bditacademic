@@ -13,10 +13,10 @@ const WhoWeAre = () => {
               Who We Are
             </h2>
             
-            <p className="text-gray-600 mb-4 leading-relaxed">
+            <p className="text-gray-600 text-xs md:text-base mb-4 leading-relaxed">
             BDIT Academic is the academic education vertical and subsidiary of BDIT Edutech Pvt. Ltd., established to deliver authentic, outcome-oriented higher education through structured online degree programs. We are committed to expanding access to recognized academic qualifications that align with evolving industry and global education standards.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 text-xs md:text-base leading-relaxed">
             We specialize in offering UGC-approved online undergraduate and postgraduate degree programs in collaboration with top NAAC A+ accredited universities in India, ensuring regulatory compliance, academic rigor, and international acceptance.
             </p>
           </div>
@@ -32,7 +32,7 @@ const WhoWeAre = () => {
                 <h3 className="text-2xl font-semibold">Our Commitment</h3>
               </div>
               
-              <p className="text-gray-300 leading-relaxed relative z-10">
+              <p className="text-gray-300 text-xs md:text-base leading-relaxed relative z-10">
                 We are committed to delivering academic excellence, fostering innovation, and building strong industry connections. We aim to empower students with practical knowledge, critical thinking abilities, and the confidence to achieve their professional goals in a competitive world.
               </p>
             </div>
