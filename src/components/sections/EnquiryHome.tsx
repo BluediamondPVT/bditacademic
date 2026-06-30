@@ -139,8 +139,8 @@ export function EnquiryHome() {
         .set(logo, {
           x: startX,
           y: startY,
-          scale: 0.45, // Changed from 0.6
-          opacity: 0.5,
+          scale: 0.9, // Changed from 0.6
+          opacity: 0.9,
           zIndex: 10
         });
       });
@@ -151,7 +151,7 @@ export function EnquiryHome() {
   }, []);
 
   return (
-    <section className="enquiry-section py-16 md:py-24 bg-[#F4F7F9] font-sans overflow-hidden">
+    <section className="enquiry-section py-16 md:py-24 bg-[#29354098] font-sans overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 items-center">
           
@@ -179,7 +179,7 @@ export function EnquiryHome() {
                   // Increased sizes here: w-20 to w-32
                   className="absolute top-1/2 left-1/2 w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32"
                 >
-                  <div className="bg-white rounded-full p-3 md:p-4 border border-gray-200 shadow-[0_8px_30px_rgba(11,114,185,0.12)] flex items-center justify-center w-full h-full">
+                  <div className="bg-white rounded-full p-5 md:p-6 border border-gray-200 shadow-[0_8px_30px_rgba(11,114,185,0.12)] flex items-center justify-center w-full h-full">
                     <div className="relative w-full h-full">
                       <Image
                         src={avatar.logo}
