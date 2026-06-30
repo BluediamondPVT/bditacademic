@@ -88,7 +88,7 @@ export default function WhatWeOffer() {
         <div className="flex justify-center mb-4">
           <div className="inline-flex items-center px-5 py-1.5 bg-[#EFF6FF] text-[#3B82F6] text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full shadow-sm">
             What We Offer
-          </div>
+          </div> 
         </div> 
 
         {/* Section Heading */}
@@ -102,23 +102,23 @@ export default function WhatWeOffer() {
         </div>
 
         {/* Timeline / Process Flow Container */}
-        <div className="steps-container relative flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 lg:gap-4 max-w-6xl mx-auto px-4">
+        <div className="steps-container relative flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-start gap-y-12 gap-x-4 max-w-6xl mx-auto px-2 sm:px-4">
           
           {/* Desktop Connecting Dotted Line */}
           <div className="absolute top-[72px] left-[10%] right-[10%] h-[2px] border-t-2 border-dashed border-blue-200 -z-10 hidden lg:block" />
 
-          {steps.map((step, index) => (
+          {steps.map((step) => (
             <React.Fragment key={step.id}>
-              {/* Step Card Wrapper */}
-              <div className="step-card-wrapper flex flex-col items-center text-center max-w-[220px] group">
+              {/* Step Card Wrapper - Adjusted width for mobile (w-[45%]) */}
+              <div className="step-card-wrapper flex flex-col items-center text-center w-[45%] md:w-[30%] lg:w-full max-w-[220px] group">
                 
                 {/* Circle Container */}
-                <div className="w-32 h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center border border-dashed border-blue-300 bg-[#F8FAFC]/40 transition-all duration-500 group-hover:border-[#3B82F6] group-hover:scale-105 group-hover:bg-[#EFF6FF]/20 relative mb-5 md:mb-6">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center border border-dashed border-blue-300 bg-[#F8FAFC]/40 transition-all duration-500 group-hover:border-[#3B82F6] group-hover:scale-105 group-hover:bg-[#EFF6FF]/20 relative mb-4 md:mb-6">
                   
                   {/* Inner White Circle */}
-                  <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-[0_8px_30px_rgba(224,242,254,0.6)] border border-sky-100/50 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_12px_35px_rgba(59,130,246,0.15)] group-hover:scale-105">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-white shadow-[0_8px_30px_rgba(224,242,254,0.6)] border border-sky-100/50 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_12px_35px_rgba(59,130,246,0.15)] group-hover:scale-105">
                     {/* PNG Icon */}
-                    <div className="relative w-12 h-12 md:w-14 md:h-14">
+                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
                       <Image
                         src={step.image}
                         alt={step.title}
@@ -130,18 +130,13 @@ export default function WhatWeOffer() {
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-sm md:text-base font-bold text-[#0B5C9C] mb-2 transition-colors duration-300 group-hover:text-[#3B82F6]">
+                <h3 className="text-[13px] sm:text-sm md:text-base font-bold text-[#0B5C9C] mb-2 transition-colors duration-300 group-hover:text-[#3B82F6] px-1">
                   {step.title}
                 </h3>
-                <p className="text-[11px] md:text-xs text-gray-500 leading-relaxed font-medium px-2">
+                <p className="text-[10px] sm:text-[11px] md:text-xs text-gray-500 leading-relaxed font-medium px-1 sm:px-2">
                   {step.description}
                 </p>
               </div>
-
-              {/* Mobile Vertical Dotted Line Connector */}
-              {index < steps.length - 1 && (
-                <div className="w-[2px] h-8 border-l-2 border-dashed border-blue-200 lg:hidden my-1" />
-              )}
             </React.Fragment>
           ))}
         </div>

@@ -82,7 +82,7 @@ export function ExpertsSection() {
         </div>
 
         {/* Experts Grid */}
-        <div className="experts-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="experts-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {expertsData.map((expert: Expert) => {
             const isActive = activeId === expert.id;
             
@@ -96,11 +96,7 @@ export function ExpertsSection() {
               >
                 {/* Background State Layer */}
                 <div 
-                  className={`absolute inset-0 transition-all duration-500 ease-out ${
-                    isActive 
-                      ? 'bg-gradient-to-b from-[#60A5FA] to-[#2563EB]' 
-                      : 'bg-neutral-600'
-                  }`}
+                  className={`absolute inset-0 transition-all duration-500 ease-out`}
                 />
 
                 {/* Expert Image */}
@@ -111,27 +107,19 @@ export function ExpertsSection() {
                       alt={expert.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className={`object-cover object-center transition-all duration-500 ease-out origin-bottom ${
-                        isActive 
-                          ? 'grayscale-0 scale-105 brightness-105' 
-                          : 'grayscale contrast-125 brightness-95 group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-105'
-                      }`}
+                      className={`object-cover object-center transition-all duration-500 ease-out origin-bottom`}
                     />
                   </div>
                 </div>
-
+ 
                 {/* Bottom Overlay Info Card */}
                 <div 
-                  className={`absolute bottom-0 left-0 right-0 bg-black py-4 px-3 text-center flex flex-col items-center justify-center transition-all duration-500 ease-out border-t border-white/10 z-10 ${
-                    isActive 
-                      ? 'translate-y-0 opacity-100' 
-                      : 'translate-y-full opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100'
-                  }`}
+                  className={`absolute bottom-0 left-0 right-0 bg-white/50 py-4 px-3 text-center flex flex-col items-center justify-center transition-all duration-500 ease-out border-t border-white/10 z-10`}
                 >
-                  <h3 className="text-sm md:text-base font-extrabold text-white tracking-wide uppercase leading-tight">
+                  <h3 className="text-sm md:text-base font-extrabold text-black tracking-wide uppercase leading-tight">
                     {expert.name}
                   </h3>
-                  <p className="text-[10px] md:text-xs text-gray-300 mt-1 font-medium leading-normal">
+                  <p className="text-[10px] md:text-xs text-black mt-1 font-medium leading-normal">
                     {expert.position}
                   </p>
                 </div>

@@ -222,10 +222,10 @@ export function ProgramsSection() {
       </div>
 
       {/* Global CSS override for Swiper Pagination dots */}
-      <style dangerouslySetInnerHTML={{__html: `
+      {/* <style dangerouslySetInnerHTML={{__html: `
         .swiper-pagination-bullet { background: #E2E8F0; opacity: 1; width: 8px; height: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .swiper-pagination-bullet-active { background: #1D4ED8; width: 22px; border-radius: 9999px; }
-      `}} />
+      `}} /> */}
     </section>
   );
 }

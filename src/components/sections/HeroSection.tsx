@@ -49,8 +49,8 @@ export function HeroSection() {
           if (entry.isIntersecting) {
             ctx = gsap.context(() => {
               // Stagger text and pills animation
-              gsap.fromTo(".hero-element", 
-                { y: 40, opacity: 0 }, 
+              gsap.fromTo(".hero-element",
+                { y: 40, opacity: 0 },
                 { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.2 }
               );
 
@@ -80,7 +80,7 @@ export function HeroSection() {
   // 3. Form submission handling with captcha verification
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (captchaInput.trim().toUpperCase() !== captchaCode) {
       alert('❌ Invalid Captcha Code! Please try again.');
       generateCaptcha(); // Force refresh captcha on wrong attempt
@@ -89,7 +89,7 @@ export function HeroSection() {
 
     alert(`🎉 Success! Request submitted for ${formData.fullName}`);
     console.log('Form Data:', { ...formData, captchaCode });
-    
+
     // Clear Form on Success
     setFormData({ fullName: '', phoneNo: '', program: '' });
     generateCaptcha();
@@ -97,7 +97,7 @@ export function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative min-h-[90vh] flex items-center overflow-hidden pb-16 pt-32 lg:pt-40">
-      
+
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -106,14 +106,14 @@ export function HeroSection() {
           fill
           sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw"
           priority={true}
-          className="object-cover object-center scale-105" 
+          className="object-cover object-center scale-105"
           quality={80}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#031B33]/95 via-[#0A3D66]/80 to-transparent"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        
+
         {/* Left Text Column */}
         <div className="text-white max-w-2xl">
           {/* Modern Pill Badge */}
@@ -123,21 +123,21 @@ export function HeroSection() {
               Welcome To BDIT Academic
             </span>
           </div>
-          
+
           <h1 className="hero-element will-change-transform text-3xl md:text-5xl lg:text-7xl font-extrabold leading-[1.15] md:leading-[1.1] mb-4 md:mb-6 tracking-tight">
             Elevate Your Career with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Top Universities</span>
           </h1>
-          
+
           <p className="hero-element will-change-transform text-sm md:text-lg text-gray-200 mb-6 md:mb-10 leading-relaxed max-w-xl font-light">
             Upgrade your qualification with UGC Recognised, flexible and affordable online degrees designed for today's fast-growing professional world.
           </p>
-          
-          <div className="hero-element will-change-transform flex flex-col sm:flex-row gap-4 font-sans">
+
+          <div className="hero-element will-change-transform flex flex-col items-center sm:items-start sm:flex-row gap-4 font-sans">
             {/* Primary Button: Liquid Fill & Glow Wave */}
-            <Button className="group relative overflow-hidden bg-linear-to-r from-[#2563EB] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-tr-none rounded-bl-none w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95">
+            <Button className="group relative overflow-hidden bg-linear-to-r from-[#2563EB] to-[#1D4ED8] text-white shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_4px_30px_rgba(59,130,246,0.6)] rounded-tr-none rounded-bl-none w-72 sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95">
               {/* Animated Liquid Overlay */}
               <span className="absolute inset-0 w-full h-full bg-linear-to-r from-[#1D4ED8] to-[#1E40AF] transition-all duration-500 ease-out -translate-x-full group-hover:translate-x-0 z-0" />
-              
+
               {/* Sliding Text Block */}
               <span className="relative z-10 flex items-center justify-center gap-2 transition-transform duration-300 group-hover:scale-105">
                 Free Video Consultation
@@ -145,13 +145,13 @@ export function HeroSection() {
             </Button>
 
             {/* Secondary Button: Clean Glassmorphic Fill Shift */}
-            <Button 
-              variant="outline" 
-              className="group relative overflow-hidden bg-white/5 text-white border border-white/20 backdrop-blur-md rounded-tr-none rounded-bl-none w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95 hover:border-white/50"
+            <Button
+              variant="outline"
+              className="group relative overflow-hidden bg-white/5 text-white border border-white/20 backdrop-blur-md rounded-tr-none rounded-bl-none w-72 sm:w-auto px-6 py-3.5 md:px-8 md:py-5 text-sm md:text-base font-semibold transition-all duration-300 active:scale-95 hover:border-white/50"
             >
               {/* Bottom up reveal effect */}
               <span className="absolute inset-0 w-full h-full bg-white transition-all duration-300 ease-out translate-y-full group-hover:translate-y-0 z-0" />
-              
+
               {/* Text color switch on hover */}
               <span className="relative z-10 transition-colors duration-300 group-hover:text-[#031B33] w-full text-center">
                 Request a Call
@@ -161,8 +161,8 @@ export function HeroSection() {
         </div>
 
         {/* Right Form Column - Premium Glassmorphism UI */}
-        <div 
-          ref={formRef} 
+        <div
+          ref={formRef}
           className="w-full max-w-md mx-auto lg:ml-auto bg-white/95 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] p-5 md:p-8 relative overflow-hidden will-change-transform"
         >
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full blur-[60px] opacity-10 pointer-events-none" />
@@ -172,20 +172,20 @@ export function HeroSection() {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 relative z-10 font-sans">
-            
+
             {/* Full Name Field */}
             <div className="relative">
-              <label 
+              <label
                 htmlFor="hero-fullname"
                 className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
               >
                 Full Name
               </label>
-              <input 
+              <input
                 id="hero-fullname"
-                type="text" 
+                type="text"
                 required
-                placeholder="Enter Full Name" 
+                placeholder="Enter Full Name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
@@ -194,17 +194,17 @@ export function HeroSection() {
 
             {/* Phone Number Field */}
             <div className="relative">
-              <label 
+              <label
                 htmlFor="hero-phone"
                 className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
               >
                 Phone No.
               </label>
-              <input 
+              <input
                 id="hero-phone"
-                type="tel" 
+                type="tel"
                 required
-                placeholder="Enter Phone Number" 
+                placeholder="Enter Phone Number"
                 value={formData.phoneNo}
                 onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
                 className="w-full border-2 border-gray-100 bg-white/50 rounded-xl px-4 py-3 md:px-5 md:py-3.5 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6] focus:ring-4 focus:ring-blue-500/10 focus:bg-white transition-all shadow-sm"
@@ -213,14 +213,14 @@ export function HeroSection() {
 
             {/* Select Program Dropdown with Custom Arrow */}
             <div className="relative">
-              <label 
+              <label
                 htmlFor="program-select"
                 className="absolute -top-2 left-4 bg-transparent px-1 text-xs font-bold text-gray-500 z-10 before:absolute before:inset-0 before:bg-white before:-z-10 before:rounded-sm"
               >
                 Select Program
               </label>
               <div className="relative">
-                <select 
+                <select
                   id="program-select"
                   required
                   value={formData.program}
@@ -241,8 +241,8 @@ export function HeroSection() {
             <div className="bg-gray-50/80 rounded-xl p-3 md:p-4 border border-gray-100/80 shadow-inner">
               <div className="flex items-center justify-between mb-2 md:mb-3">
                 <span className="text-[10px] md:text-xs font-bold text-gray-500">Security Check</span>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={generateCaptcha}
                   className="p-1 md:p-1.5 bg-white border border-gray-200 rounded-md hover:bg-gray-100 active:scale-95 transition-all shadow-sm"
                   title="Refresh Captcha"
@@ -256,10 +256,10 @@ export function HeroSection() {
                 <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 px-3 py-2.5 rounded-lg font-mono font-black text-sm md:text-base tracking-widest text-[#3B82F6] shadow-sm select-none w-1/3 flex items-center justify-center relative overflow-hidden italic line-through decoration-gray-400/40">
                   {captchaCode || '....'}
                 </div>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
-                  placeholder="Enter Code" 
+                  placeholder="Enter Code"
                   aria-label="Enter Captcha Security Code"
                   value={captchaInput}
                   onChange={(e) => setCaptchaInput(e.target.value)}
@@ -268,7 +268,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-xl py-3.5 md:py-5 text-sm md:text-base flex items-center justify-center gap-2 mt-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.99] hover:-translate-y-0.5">
+            <Button type="submit" className="w-full bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-s-sm py-3.5 md:py-5 text-sm md:text-base flex items-center justify-center gap-2 mt-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.99] hover:-translate-y-0.5">
               Submit Request <Send className="w-4 h-4 ml-1" />
             </Button>
           </form>

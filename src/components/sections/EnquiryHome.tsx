@@ -1,34 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
 
 interface AvatarItem {
   id: number;
   name: string;
   logo: string;
-  ring: number;
-  angle: number;
 }
 
+// Exactly 6 images as requested
 const avatars: AvatarItem[] = [
-  // Ring 1 (Center - Static)
-  { id: 1, name: 'Amity', logo: '/images/universities/amity.png', ring: 1, angle: 0 },
-  
-  // Ring 2 (Middle Ring - 3 avatars)
-  { id: 2, name: 'DY Patil', logo: '/images/universities/dy-patil.png', ring: 2, angle: -90 },
-  { id: 3, name: 'Manipal', logo: '/images/universities/manipal.png', ring: 2, angle: 30 },
-  { id: 4, name: 'Chandigarh', logo: '/images/universities/chandigarh.png', ring: 2, angle: 150 },
-  
-  // Ring 3 (Outer Ring - 5 avatars)
-  { id: 5, name: 'Asian', logo: '/images/universities/asian.png', ring: 3, angle: 180 },
-  { id: 6, name: 'Mangalayatan', logo: '/images/universities/mangalayatan.png', ring: 3, angle: 252 },
-  { id: 7, name: 'Symbiosis', logo: '/images/universities/symbiosis.png', ring: 3, angle: 324 },
-  { id: 8, name: 'Swami Vivekanand', logo: '/images/universities/swami-vivkanand.png', ring: 3, angle: 36 },
-  { id: 9, name: 'NMIMS', logo: '/images/universities/nmims.jpg', ring: 3, angle: 108 },
+  { id: 1, name: 'Amity', logo: '/images/universities/amity.png' },
+  { id: 2, name: 'DY Patil', logo: '/images/universities/dy-patil.png' },
+  { id: 3, name: 'Manipal', logo: '/images/universities/manipal.png' },
+  { id: 4, name: 'Chandigarh', logo: '/images/universities/chandigarh.png' },
+  { id: 5, name: 'Asian', logo: '/images/universities/asian.png' },
+  { id: 6, name: 'Symbiosis', logo: '/images/universities/symbiosis.png' },
 ];
 
 export function EnquiryHome() {
+  // === FORM STATE (UNTOUCHED) ===
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -84,134 +77,127 @@ export function EnquiryHome() {
     }, 1500);
   };
 
-  const degToRad = (deg: number) => (deg * Math.PI) / 180;
+  // === NEW LEFT UI ANIMATION LOGIC ===
+  const containerRef = useRef<HTMLDivElement>(null);
+  const logosRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+   // Smarter responsive radius to prevent left/right cutoff
+    const getRadius = () => {
+      if (window.innerWidth < 768) return 110; // Mobile
+      if (window.innerWidth < 1024) return 160; // Tablet
+      return 190; // Desktop (Reduced from 200 to prevent edge clipping)
+    };
+    
+    const radius = getRadius();
+    const ctx = gsap.context(() => {
+      
+      // 1. Set Initial positions on the outer ring for all 6 logos
+      logosRef.current.forEach((logo, index) => {
+        if (!logo) return;
+        const angle = (index * 60) * (Math.PI / 180); 
+        const startX = Math.cos(angle) * radius;
+        const startY = Math.sin(angle) * radius;
+
+        // Place them on the ring, scaled DOWN (keeps them crisp)
+        gsap.set(logo, {
+          x: startX,
+          y: startY,
+          scale: 0.6, // Changed from 0.6
+          opacity: 0.8,
+          xPercent: -50,
+          yPercent: -50,
+        });
+      });
+
+      // 2. Create the looping animation timeline
+      const tl = gsap.timeline({ repeat: -1 });
+
+      logosRef.current.forEach((logo, index) => {
+        if (!logo) return;
+        
+        const angle = (index * 60) * (Math.PI / 180);
+        const startX = Math.cos(angle) * radius;
+        const startY = Math.sin(angle) * radius;
+
+        tl.to(logo, {
+          x: 0,
+          y: 0,
+          scale: 1.1, // Changed from 1.3 (returns to full crisp resolution)
+          opacity: 1,
+          duration: 1,
+          ease: "back.out(1.2)",
+          zIndex: 50 
+        })
+        .to({}, { duration: 1.5 }) 
+        .to(logo, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.in"
+        })
+        .set(logo, {
+          x: startX,
+          y: startY,
+          scale: 0.45, // Changed from 0.6
+          opacity: 0.5,
+          zIndex: 10
+        });
+      });
+      
+    }, containerRef);
+
+    return () => ctx.revert(); // Cleanup on unmount
+  }, []);
 
   return (
     <section className="enquiry-section py-16 md:py-24 bg-[#F4F7F9] font-sans overflow-hidden">
-      
-      {/* Static CSS Variables for Radii */}
-      <style>{`
-        .enquiry-section {
-          --radius-inner: 80px;
-          --radius-middle: 150px;
-          --radius-outer: 220px;
-        }
-        @media (min-width: 768px) {
-          .enquiry-section {
-            --radius-inner: 120px;
-            --radius-middle: 220px;
-            --radius-outer: 320px;
-          }
-        }
-        @media (min-width: 1024px) {
-          .enquiry-section {
-            --radius-inner: 130px;
-            --radius-middle: 240px;
-            --radius-outer: 340px;
-          }
-        }
-      `}</style>
-
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px]">
-        {/* Increased gap between columns for more space */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 items-center">
           
-          {/* Left Column: Static Avatar Network (Takes 6 cols) */}
-          <div className="lg:col-span-6 flex justify-center items-center relative min-h-[500px] md:min-h-[700px] lg:min-h-[760px]">
-            <div className="relative w-full h-full flex justify-center items-center">
+          {/* === LEFT COLUMN: DYNAMIC ANIMATED RING === */}
+          <div ref={containerRef} className="lg:col-span-6 flex justify-center items-center relative min-h-[400px] md:min-h-[600px] lg:min-h-[760px]">
+            
+            {/* Center Anchor Point */}
+            <div className="relative w-full z-0 h-full flex justify-center items-center">
               
-              {/* Concentric Dashed Rings - Exactly matched to radii */}
+              {/* Single Dashed Outer Ring (Sizes updated to match new radius) */}
               <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1.5px] border-dashed border-blue-200/80 rounded-full pointer-events-none" 
-                style={{ width: 'calc(var(--radius-outer) * 2)', height: 'calc(var(--radius-outer) * 2)' }} 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[2px] border-dashed border-blue-300/60 rounded-full pointer-events-none w-[220px] h-[220px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px]" 
               />
-              <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1.5px] border-dashed border-blue-200/80 rounded-full pointer-events-none" 
-                style={{ width: 'calc(var(--radius-middle) * 2)', height: 'calc(var(--radius-middle) * 2)' }} 
-              />
-              <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1.5px] border-dashed border-blue-200/80 rounded-full pointer-events-none bg-blue-50/20" 
-                style={{ width: 'calc(var(--radius-inner) * 2)', height: 'calc(var(--radius-inner) * 2)' }} 
-              />
+              
+              {/* Center Glow / Target Area */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-400/10 rounded-full blur-xl pointer-events-none" />
 
-              {/* Ring 3 (Outer Ring Avatars) */}
-              {avatars.filter(a => a.ring === 3).map((avatar) => {
-                const cos = Math.cos(degToRad(avatar.angle));
-                const sin = Math.sin(degToRad(avatar.angle));
-                return (
-                  <div
-                    key={avatar.id}
-                    className="absolute w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 z-20"
-                    style={{
-                      left: `calc(50% + (var(--radius-outer) * ${cos}))`,
-                      top: `calc(50% + (var(--radius-outer) * ${sin}))`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  >
-                    <div className="bg-white rounded-full p-2 md:p-3 border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(11,114,185,0.15)] transition-all duration-300 hover:scale-110 flex items-center justify-center w-full h-full cursor-pointer group">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={avatar.logo}
-                          alt={avatar.name}
-                          fill
-                          sizes="(max-width: 768px) 56px, 96px"
-                          className="object-contain transition-transform duration-300 group-hover:scale-105"
-                          quality={75}
-                        />
-                      </div>
+              {/* The 6 Animated Logos (Increased width/height classes) */}
+              {avatars.map((avatar, index) => (
+                <div
+                  key={avatar.id}
+                  ref={(el) => {
+                    logosRef.current[index] = el;
+                  }}
+                  // Increased sizes here: w-20 to w-32
+                  className="absolute top-1/2 left-1/2 w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32"
+                >
+                  <div className="bg-white rounded-full p-3 md:p-4 border border-gray-200 shadow-[0_8px_30px_rgba(11,114,185,0.12)] flex items-center justify-center w-full h-full">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={avatar.logo}
+                        alt={avatar.name}
+                        fill
+                        sizes="(max-width: 768px) 80px, 128px"
+                        className="object-contain"
+                        quality={90}
+                      />
                     </div>
                   </div>
-                );
-              })}
-
-              {/* Ring 2 (Middle Ring Avatars) */}
-              {avatars.filter(a => a.ring === 2).map((avatar) => {
-                const cos = Math.cos(degToRad(avatar.angle));
-                const sin = Math.sin(degToRad(avatar.angle));
-                return (
-                  <div
-                    key={avatar.id}
-                    className="absolute w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 z-20"
-                    style={{
-                      left: `calc(50% + (var(--radius-middle) * ${cos}))`,
-                      top: `calc(50% + (var(--radius-middle) * ${sin}))`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  >
-                    <div className="bg-white rounded-full p-2 md:p-3 border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(11,114,185,0.15)] transition-all duration-300 hover:scale-110 flex items-center justify-center w-full h-full cursor-pointer group">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={avatar.logo}
-                          alt={avatar.name}
-                          fill
-                          sizes="(max-width: 768px) 56px, 96px"
-                          className="object-contain transition-transform duration-300 group-hover:scale-105"
-                          quality={75}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Ring 1 (Center Ring: Static Centered Avatar) */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 bg-white border border-gray-100 rounded-full p-4 md:p-6 shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center justify-center z-30 transition-transform duration-300 hover:scale-105 cursor-pointer">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/images/universities/amity.png"
-                    alt="Amity University"
-                    fill
-                    sizes="(max-width: 768px) 64px, 128px"
-                    className="object-contain"
-                    quality={75}
-                  />
                 </div>
-              </div>
+              ))}
 
             </div>
           </div>
 
-          {/* Right Column: Theme-matching Enquiry Form (Takes 5 cols, starts at 8, creates empty gap of 1 col) */}
+          {/* === RIGHT COLUMN: UNTOUCHED FORM === */}
           <div className="lg:col-span-5 lg:col-start-8 z-20">
             <div className="bg-[#0B72B9] rounded-[2rem] p-6 sm:p-10 md:p-12 shadow-2xl shadow-blue-900/20 text-white relative overflow-hidden">
               

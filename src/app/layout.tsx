@@ -93,7 +93,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         {/* <SmoothScroll> */}
           <Navbar />
-          {/* Yahan se pt-24 hata diya hai taaki image top se shuru ho */}
           <main className="flex-1"> 
             {children}
           </main>
