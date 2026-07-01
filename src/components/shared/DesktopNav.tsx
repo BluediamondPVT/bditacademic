@@ -20,7 +20,8 @@ export function DesktopNav({ pathname, navLinks }: DesktopNavProps) {
 
   return (
     <div 
-      className="hidden lg:flex items-center justify-center gap-1 font-sans bg-white/5 p-1.5 rounded-full border border-white/5 relative"
+      // Container updated for light theme
+      className="hidden lg:flex items-center justify-center gap-1 font-sans bg-slate-100/50 p-1.5 rounded-full border border-slate-200/60 relative backdrop-blur-sm"
       onMouseLeave={() => setHoveredPath(null)}
     >
       {navLinks.map((link) => {
@@ -34,23 +35,24 @@ export function DesktopNav({ pathname, navLinks }: DesktopNavProps) {
             onMouseEnter={() => setHoveredPath(link.name)}
             className={cn(
               "font-semibold text-[14px] px-5 py-2.5 rounded-full transition-colors duration-300 relative tracking-wide outline-none z-10",
-              isActive ? "text-[#031B33]" : "text-white/70 hover:text-white"
+              // Text colors updated for light theme visibility
+              isActive ? "text-[#3B82F6]" : "text-slate-600 hover:text-slate-900"
             )}
           >
-            {/* 1. Active Page Solid Pill Background */}
+            {/* 1. Active Page Solid Pill Background (Light Theme) */}
             {isActive && (
               <motion.div
                 layoutId="activeNavigationPill"
-                className="absolute inset-0 bg-white rounded-full -z-20 shadow-sm"
+                className="absolute inset-0 bg-white rounded-full -z-20 shadow-sm border border-slate-100/50"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
 
-            {/* 2. Magnetic Sliding Hover Pill */}
+            {/* 2. Magnetic Sliding Hover Pill (Light Theme) */}
             {isHovered && !isActive && (
               <motion.div
                 layoutId="hoverNavigationPill"
-                className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-full -z-10"
+                className="absolute inset-0 bg-slate-200/50 rounded-full -z-10"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

@@ -1,5 +1,5 @@
 // src/assets/index.ts
-import Logo from '../../public/images/BDIT-logo-trans.png';
+import Logo from '../../public/images/BDIT-logo.png';
 import HeroBanner from '../../public/images/hero.webp';
 import Ba from '../../public/images/ugpg-images/ba.webp';
 import Bba from '../../public/images/ugpg-images/bba.webp';
@@ -26,8 +26,13 @@ import Gallery3 from '../../public/images/gallery/3.jpg';
 import Gallery4 from '../../public/images/gallery/4.jpg';
 import Gallery5 from '../../public/images/gallery/5.jpg';
 import Gallery6 from '../../public/images/gallery/6.webp';
-
-
+import BGHero from '../../public/images/hero-section/main-hero.png';
+import ReactIcon from '../../public/images/hero-section/react.svg';
+import FigmaIcon from '../../public/images/hero-section/figma.svg';
+import NewStd from '../../public/images/hero-section/01.jpg';
+import NewStd2 from '../../public/images/hero-section/02.jpg';
+import NewStd3 from '../../public/images/hero-section/03.jpg';
+import NewStd4 from '../../public/images/hero-section/04.jpg';
 
 export const Images = {
   Logo,
@@ -61,4 +66,13 @@ export const Images = {
     Gallery5,
     Gallery6,
   },
+  HeroSection: {
+    BGHero,
+    ReactIcon,
+    NewStd,
+    NewStd2,
+    NewStd3,
+    NewStd4,
+    FigmaIcon,
+  }
 };
