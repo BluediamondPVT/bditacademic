@@ -100,12 +100,12 @@ export default function AcademicPrograms() {
       {/* Background Mesh Gradient & Glowing Orbs (Light Mode) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Base Mesh */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/50 via-slate-50 to-slate-50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-blue-100/50 via-slate-50 to-slate-50"></div>
         
         {/* Floating Orbs */}
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-purple-300/40 rounded-full blur-[100px] mix-blend-multiply opacity-60 animate-pulse"></div>
-        <div className="absolute top-40 -right-20 w-[30rem] h-[30rem] bg-cyan-300/30 rounded-full blur-[120px] mix-blend-multiply opacity-50" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute -bottom-40 left-1/3 w-[40rem] h-[40rem] bg-blue-300/30 rounded-full blur-[130px] mix-blend-multiply opacity-40"></div>
+        <div className="absolute top-40 -right-20 w-120 h-120 bg-cyan-300/30 rounded-full blur-[120px] mix-blend-multiply opacity-50" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-40 left-1/3 w-160 h-160 bg-blue-300/30 rounded-full blur-[130px] mix-blend-multiply opacity-40"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -142,7 +142,7 @@ export default function AcademicPrograms() {
                 className="group relative h-full rounded-3xl bg-white/70 backdrop-blur-xl border border-white hover:border-blue-100 p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col"
               >
                 {/* Subtle Inner Glow on Hover */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-3xl bg-linear-to-b from-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                 {/* Card Header */}
                 <div className="flex flex-col mb-8 relative z-10">
@@ -157,7 +157,7 @@ export default function AcademicPrograms() {
                 {/* Programs List */}
                 <motion.ul 
                   variants={listVariants}
-                  className="space-y-3 flex-grow relative z-10"
+                  className="space-y-3 grow relative z-10"
                 >
                   {category.programs.map((program, idx) => (
                     <motion.li 

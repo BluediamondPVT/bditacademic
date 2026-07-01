@@ -18,7 +18,15 @@ import Pg from '../../public/images/ugpg-images/pg.webp';
 import Pgdba from '../../public/images/ugpg-images/pgdba.webp';
 import Pgdca from '../../public/images/ugpg-images/pgdca.webp';
 import LagecyBg from '../../public/images/about-teams.webp';
-import Owner from '../../public/images/owner.webp'
+import Owner from '../../public/images/owner.webp';
+import BgFooter from '../../public/images/bg-footer.webp';
+import Gallery1 from '../../public/images/gallery/1.jpg';
+import Gallery2 from '../../public/images/gallery/2.jpg'; 
+import Gallery3 from '../../public/images/gallery/3.jpg';
+import Gallery4 from '../../public/images/gallery/4.jpg';
+import Gallery5 from '../../public/images/gallery/5.jpg';
+import Gallery6 from '../../public/images/gallery/6.webp';
+
 
 
 export const Images = {
@@ -26,6 +34,7 @@ export const Images = {
   HeroBanner,
   LagecyBg,
   Owner,
+  BgFooter,
   CourseImages: {
     Ba,
     Bba,
@@ -43,5 +52,13 @@ export const Images = {
     Pg,
     Pgdba,
     Pgdca,
-  }
+  },
+  GalleryImages: {
+    Gallery1,
+    Gallery2,
+    Gallery3,
+    Gallery4,
+    Gallery5,
+    Gallery6,
+  },
 };
