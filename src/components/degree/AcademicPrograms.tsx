@@ -78,8 +78,8 @@ const itemVariants: Variants = {
     opacity: 1, 
     y: 0, 
     transition: { 
-      type: "spring", // Ab TypeScript error nahi dega
-      stiffness: 100, // (Aapki jo bhi values thi wahi rakhna)
+      type: "spring", 
+      stiffness: 100, 
       damping: 10 
     } 
   }
