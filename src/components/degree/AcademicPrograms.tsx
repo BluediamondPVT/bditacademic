@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { GraduationCap, BookOpen, Award, CheckCircle } from 'lucide-react';
 import { Inter } from 'next/font/google';
 
@@ -72,13 +72,17 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 20 },
-  },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      type: "spring", // Ab TypeScript error nahi dega
+      stiffness: 100, // (Aapki jo bhi values thi wahi rakhna)
+      damping: 10 
+    } 
+  }
 };
 
 const listVariants = {
