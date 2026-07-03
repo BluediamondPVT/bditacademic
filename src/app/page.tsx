@@ -1,9 +1,10 @@
 'use client';
 
 import { HeroSection } from "@/components/sections/HeroSection";
+import StatsSection from "@/components/sections/StatsSection";
 import dynamic from "next/dynamic";
 
-const ProgramsSection = dynamic(() => import("@/components/sections/ProgramsSection").then((mod) => mod.ProgramsSection), {
+const ProgramsSection = dynamic(() => import("@/components/sections/ProgramsSection"), {
   ssr: false,
   loading: () => <div className="min-h-[600px] md:min-h-[750px] bg-slate-50 w-full animate-pulse" />,
 });
@@ -33,6 +34,9 @@ export default function Home() {
     <div className="flex flex-col w-full">
       {/* 1. Hero Banner */}
       <HeroSection />
+
+      {/* 2. State Section (Aage banayenge) */}
+        <StatsSection/>
 
       {/* 2. Programs Section (Aage banayenge) */}
       <ProgramsSection />

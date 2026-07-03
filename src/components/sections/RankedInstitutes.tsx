@@ -2,17 +2,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
-import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import { GraduationCap, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Images } from '../../assets';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -29,8 +21,8 @@ const universities: University[] = [
   { id: 2, name: 'Symbiosis International University', image: '/images/universities/symbiosis.png' },
   { id: 3, name: 'Asian International University', image: '/images/universities/asian.png' },
   { id: 4, name: 'Manipal University', image: '/images/universities/manipal.png' },
-  { id: 5, name: 'Chandigarh University', image: '/images/universities/chandigarh.png' },
-  { id: 6, name: 'Amity University', image: '/images/universities/amity.png' },
+  { id: 5, name: 'Amity University', image: '/images/universities/amity.png' },
+  { id: 6, name: 'Chandigarh University', image: '/images/universities/chandigarh.png' },
   { id: 7, name: 'D.Y. Patil University', image: '/images/universities/dy-patil.png' },
   { id: 8, name: 'Mangalayatan University', image: '/images/universities/mangalayatan.png' },
   { id: 9, name: 'Subharti University', image: '/images/universities/swami-vivkanand.png' },
@@ -47,14 +39,15 @@ export default function RankedInstitutes() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             ctx = gsap.context(() => {
-              // Header entrance animation
+              // Left column content stagger entrance animation
               gsap.fromTo(
-                '.ranked-title-block',
+                '.ranked-animate-item',
                 { y: 30, opacity: 0 },
                 {
                   y: 0,
                   opacity: 1,
                   duration: 0.8,
+                  stagger: 0.12,
                   ease: 'power3.out',
                   scrollTrigger: {
                     trigger: containerRef.current,
@@ -64,18 +57,19 @@ export default function RankedInstitutes() {
                 }
               );
 
-              // Slider cards stagger entry
+              // Grid cards stagger entrance animation
               gsap.fromTo(
-                '.swiper-slide',
-                { y: 40, opacity: 0 },
+                '.university-card',
+                { y: 40, opacity: 0, scale: 0.96 },
                 {
                   y: 0,
                   opacity: 1,
+                  scale: 1,
                   duration: 0.8,
-                  stagger: 0.08,
+                  stagger: 0.06,
                   ease: 'power3.out',
                   scrollTrigger: {
-                    trigger: '.ranked-slider-trigger',
+                    trigger: '.university-grid-trigger',
                     start: 'top 85%',
                     toggleActions: 'play none none none',
                   },
@@ -99,97 +93,88 @@ export default function RankedInstitutes() {
     };
   }, []);
 
+  const handleGetInTouch = () => {
+    const element = document.querySelector('.enquiry-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       ref={containerRef} 
       className="py-16 md:py-24 bg-white font-sans overflow-hidden border-t border-slate-100 relative"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none -z-10 select-none">
-        <Image
-          src={Images.LagecyBg}
-          alt="Legacy Background"
-          fill
-          className="object-cover object-center opacity-85"
-          priority
-        />
-      </div>
-
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
-        
-        {/* Section Heading Block */}
-        <div className="ranked-title-block will-change-transform text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          {/* Badge */}
-          <div className="flex justify-center mb-4">
-            <div className="inline-flex items-center text-[10px] md:text-xs font-extrabold uppercase tracking-widest text-[#3B82F6]">
-              Start Learning Today
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Heading and Call to Action */}
+          <div className="lg:col-span-5 text-left flex flex-col items-start">
+            
+            {/* Pill Badge */}
+            <div className="ranked-animate-item inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-100 bg-slate-50/50 shadow-sm mb-6 text-xs font-semibold text-slate-800">
+              <GraduationCap className="w-4.5 h-4.5 text-[#E67E22]" />
+              <span>Our Partners</span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="ranked-animate-item text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] mb-6 tracking-tight font-sans">
+              Learn From Top Ranked <br />
+              Institutes & <span className="italic text-[#E67E22] font-semibold font-serif">universities</span>
+            </h2>
+
+            {/* Description Paragraph */}
+            <p className="ranked-animate-item text-xs md:text-sm text-gray-500 leading-relaxed max-w-md mb-8">
+              Study with India's top UGC-recognised, NAAC-accredited universities providing flexible and globally accepted online UG & PG degree programs.
+            </p>
+
+            {/* Premium Button */}
+            <button 
+              onClick={handleGetInTouch}
+              className="ranked-animate-item group flex items-center justify-between pl-6 pr-2 py-2 border border-slate-200 rounded-xl bg-white hover:border-[#E67E22] hover:shadow-[0_8px_30px_rgba(230,126,34,0.12)] transition-all duration-300 cursor-pointer"
+            >
+              <span className="font-bold text-slate-800 mr-5 text-sm group-hover:text-[#E67E22] transition-colors duration-300">
+                Get In Touch
+              </span>
+              <div className="w-9 h-9 rounded-lg bg-[#E67E22] flex items-center justify-center text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <ArrowUpRight className="w-4.5 h-4.5" />
+              </div>
+            </button>
+          </div>
+
+          {/* Right Column: 3x3 Logo Grid */}
+          <div className="lg:col-span-7 w-full university-grid-trigger">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {universities.map((uni, idx) => {
+                const isCenter = idx === 4; // 5th card (index 4) is the center card of the 3x3 grid
+                return (
+                  <div
+                    key={uni.id}
+                    className={`university-card flex items-center justify-center p-5 aspect-4/3 rounded-2xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer ${
+                      isCenter
+                        ? 'bg-[#E67E22] border-[#E67E22] text-white shadow-[0_12px_24px_rgba(230,126,34,0.25)]'
+                        : 'bg-white border-slate-100 hover:border-slate-300 text-slate-850'
+                    }`}
+                  >
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <Image
+                        src={uni.image}
+                        alt={uni.name}
+                        fill
+                        sizes="(max-width: 640px) 120px, 180px"
+                        className={`object-contain p-2 transition-all duration-300 ${
+                          isCenter ? 'brightness-0 invert scale-105' : 'contrast-[1.02]'
+                        }`}
+                        quality={85}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-          
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-            Learn From Top Ranked Institutes & Universities
-          </h2>
-          <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Study with India's top UGC-recognised, NAAC-accredited universities providing flexible and globally accepted online UG & PG degree programs.
-          </p>
+
         </div>
-
-        {/* Swiper Slider Wrapper */}
-        <div className="ranked-slider-trigger relative max-w-6xl mx-auto px-4 md:px-8">
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={5}
-            loop={true}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            navigation={{
-              prevEl: '.swiper-button-prev-ranked',
-              nextEl: '.swiper-button-next-ranked',
-            }}
-            breakpoints={{
-              320: { slidesPerView: 1.8, spaceBetween: 16 },
-              480: { slidesPerView: 2.3, spaceBetween: 16 },
-              768: { slidesPerView: 3.5, spaceBetween: 20 },
-              1024: { slidesPerView: 5, spaceBetween: 24 },
-            }}
-            className="py-4 px-1" // prevents clip of card hover shadow
-          >
-            {universities.map((uni) => (
-              <SwiperSlide key={uni.id} className="py-2 will-change-transform">
-                {/* University Logo Card with Hover highlight border/glow */}
-                <div className="bg-white rounded-2xl border border-slate-150 p-2 flex items-center justify-center aspect-4/3 relative transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-[#406094] hover:scale-105 hover:shadow-[0_10px_30px_rgba(59,130,246,0.12)] cursor-pointer group/card">
-                  <div className="relative w-full h-full flex items-center justify-center">
-                    <Image
-                      src={uni.image}
-                      alt={uni.name}
-                      fill
-                      sizes="(max-width: 640px) 120px, 180px"
-                      className="object-contain p-1 filter contrast-[1.02] transition-transform duration-300 group-hover/card:scale-105"
-                      quality={75}
-                    />
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Custom Navigation Buttons - Positioned Bottom Right side */}
-          <div className="flex justify-end gap-3 mt-6 pr-1 z-10 relative">
-            <button 
-              className="swiper-button-prev-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Previous Slide"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button 
-              className="swiper-button-next-ranked w-10 h-10 md:w-11 md:h-11 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-[#3B82F6] hover:text-white hover:border-[#3B82F6] transition-all duration-300 shadow-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Next Slide"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
       </div>
     </section>
   );

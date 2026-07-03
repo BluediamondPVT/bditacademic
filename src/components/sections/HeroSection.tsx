@@ -60,7 +60,7 @@ export function HeroSection() {
             </figure>
 
             {/* Main Headline - Responsive Text Sizes */}
-            <h1 className="text-xl sm:text-xl lg:text-6xl font-extrabold text-slate-900 leading-tight md:leading-tight lg:leading-tight mb-0">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight md:leading-tight lg:leading-tight mb-0">
               Limitless learning at your{' '}
               <span className="relative inline-block mt-2 lg:mt-0">
                 fingertips
@@ -78,22 +78,29 @@ export function HeroSection() {
             </p> 
 
             {/* Features List - Responsive gap and text size */}
-            <ul className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mb-8 text-slate-700 font-medium text-sm sm:text-base px-4 lg:px-0">
-              <li className="flex items-center justify-center sm:justify-start gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" /> Learn with experts
+            <ul className="flex flex-row flex-wrap justify-center lg:justify-start gap-x-3 gap-y-2.5 mb-8 text-slate-700 font-semibold text-xs sm:text-sm px-4 lg:px-0">
+              <li className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full shadow-sm hover:bg-slate-100 transition-colors">
+                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 shrink-0" /> Learn with experts
               </li>
-              <li className="flex items-center justify-center sm:justify-start gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" /> Get certificate
+              <li className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full shadow-sm hover:bg-slate-100 transition-colors">
+                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 shrink-0" /> Get certificate
               </li>
-              <li className="flex items-center justify-center sm:justify-start gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" /> Get membership
+              <li className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full shadow-sm hover:bg-slate-100 transition-colors">
+                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 shrink-0" /> Get membership
               </li>
             </ul>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 px-4 lg:px-0">
-              <Link href="#" className="bg-red-50 text-red-500 hover:bg-red-500 hover:text-white px-8 py-3.5 rounded-md font-bold transition-all duration-300 w-full sm:w-auto text-center shadow-sm">
-                Get Started
+              <Link href="#" className="flex items-center w-fit bg-white border border-gray-200/80 rounded-xl p-1.5 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer hover:border-gray-300">
+                <span className="text-[#1B3B36] font-bold text-sm sm:text-base px-5 select-none">
+                  Get Started
+                </span>
+                <div className="bg-[#D66A23] group-hover:bg-[#c55d1c] text-white w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 shrink-0">
+                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </div>
               </Link>
 
               <Link href="#" className="flex items-center gap-3 group w-full sm:w-auto justify-center">
@@ -132,36 +139,34 @@ export function HeroSection() {
                 className="w-full h-auto object-contain drop-shadow-xl"
                 priority
               />
+
+              {/* Floating University Logo 1 - NMIMS (Left) */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="p-1.5 sm:p-2 bg-white shadow-xl rounded-2xl absolute top-1/2 -left-6 sm:-left-10 lg:-left-14 z-20 flex items-center justify-center"
+              >
+                <Image src="/images/universities/nmims.jpg" alt="NMIMS University" width={80} height={80} className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain" />
+              </motion.div>
+
+              {/* Floating University Logo 2 - Amity (Top Right) */}
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
+                className="p-1.5 sm:p-2 bg-white shadow-xl rounded-2xl absolute top-6 sm:top-10 -right-4 sm:-right-8 lg:-right-10 z-20 flex items-center justify-center"
+              >
+                <Image src="/images/universities/amity.png" alt="Amity University" width={72} height={72} className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain" />
+              </motion.div>
+
+              {/* Floating University Logo 3 - Manipal (Bottom Right) */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }}
+                className="p-1.5 sm:p-2 bg-white shadow-xl rounded-2xl absolute bottom-[25%] sm:bottom-1/3 -right-4 sm:-right-8 lg:-right-10 z-20 hidden sm:flex items-center justify-center"
+              >
+                <Image src="/images/universities/manipal.png" alt="Manipal University" width={72} height={72} className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain" />
+              </motion.div>
             </div>
-
-            {/* Floating Elements with Framer Motion for Premium Feel */}
-
-            {/* Floating React Icon (Left) */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="p-2 sm:p-3 bg-white shadow-xl rounded-xl absolute top-[25%] sm:top-1/3 -left-4 sm:-left-8 lg:-left-12 -translate-y-1/2 z-20"
-            >
-              <Image src={Images.HeroSection.ReactIcon} alt="React" width={40} height={40} className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain" />
-            </motion.div>
-
-            {/* Floating Angular Icon (Top Right) */}
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
-              className="p-2 sm:p-3 bg-white shadow-xl rounded-xl absolute top-5 sm:top-0 right-0 sm:mr-8 lg:mr-12 z-20"
-            >
-              <Image src={Images.HeroSection.NewStd} alt="Angular" width={35} height={35} className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 object-contain" />
-            </motion.div>
-
-            {/* Floating Figma Icon (Bottom Right) */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }}
-              className="p-2 sm:p-3 bg-white shadow-xl rounded-xl absolute top-2/3 right-0 -translate-y-1/2 mt-8 sm:mt-16 lg:mt-24 mr-2 sm:mr-8 z-20 hidden sm:block"
-            >
-              <Image src={Images.HeroSection.FigmaIcon} alt="Figma" width={24} height={34} className="w-4 h-6 sm:w-5 sm:h-7 object-contain" />
-            </motion.div>
 
             {/* Floating 'Our daily new students' Badge (Right) */}
             <motion.div

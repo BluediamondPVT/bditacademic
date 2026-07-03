@@ -2,64 +2,60 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, HelpCircle, GraduationCap, Calendar, CreditCard, BookOpen, Search, Laptop, Briefcase } from 'lucide-react';
+import { Plus, Minus, GraduationCap, Mail, Phone, ArrowUpRight } from 'lucide-react';
 import PageBanner from '@/components/shared/PageBanner';
 import { cn } from '@/lib/utils';
 import { Images } from '@/assets';
 
-// FAQ Data with relevant icons
+// FAQ Data with relevant student images mapping
 const faqData = [
     {
         id: 1,
-        question: 'What programs and courses do you offer?',
-        answer: 'We offer a wide range of undergraduate, postgraduate, and diploma programs across various disciplines including Engineering, Management, Medical Sciences, Arts, and Commerce. Our courses are designed in collaboration with top-ranked universities to ensure industry-relevant education.',
-        icon: BookOpen,
+        question: 'How do I enroll in a course?',
+        answer: 'To enroll in any of our UGC-recognized online programs, you can apply directly through our website. Select your desired program, fill out the application form, upload the required academic documents, and pay the enrollment fee. Our counselors will guide you through the process.',
+        image: Images.HeroSection.NewStd,
     },
     {
         id: 2,
-        question: 'What are the admission requirements?',
-        answer: 'Admission requirements vary by program. Generally, you\'ll need to have completed your previous education with minimum qualifying marks, valid entrance exam scores (if applicable), and necessary documents. Our admission team will guide you through the specific requirements for your chosen program.',
-        icon: GraduationCap,
+        question: 'Are the courses suitable for beginners?',
+        answer: 'Yes, our undergraduate and postgraduate programs are structured to cater to both beginners and working professionals. We provide foundational courses, bridging classes, and detailed study materials to ensure a smooth transition into advanced learning.',
+        image: Images.HeroSection.NewStd2,
     },
     {
         id: 3,
-        question: 'When does the admission process start?',
-        answer: 'Admissions are typically open twice a year (January and July sessions) for most of our online degree programs. We recommend checking our website regularly or contacting our admission counselors for exact deadline dates.',
-        icon: Calendar,
+        question: 'Are the courses self-paced or live?',
+        answer: 'We offer both self-paced courses and live sessions. You can choose based on your preference.',
+        image: Images.HeroSection.NewStd3,
     },
     {
         id: 4,
-        question: 'Do you offer scholarships or financial aid?',
-        answer: 'Yes, we believe education should be accessible to everyone. We offer various merit-based scholarships, early-bird discounts, and easy EMI options. Please speak with our academic counselors to evaluate your eligibility for financial aid.',
-        icon: CreditCard,
+        question: 'Can I learn at my own pace?',
+        answer: 'Absolutely! Our online degrees offer flexible schedules, allowing you to access recorded lectures, study materials, and assessments at your own convenience. This enables you to balance your education with work and personal commitments.',
+        image: Images.HeroSection.NewStd4,
     },
     {
         id: 5,
-        question: 'Are online learning options available?',
-        answer: 'Yes, we offer flexible online learning options across various disciplines. Our interactive digital platform features live classes, recorded lectures, comprehensive study materials, and virtual mentorship, enabling students to pursue UGC-recognized degrees from anywhere without disrupting their personal or professional commitments.',
-        icon: Laptop,
+        question: 'Can I switch or upgrade my course later?',
+        answer: 'Yes, academic mobility is supported under specific university guidelines. You can submit a request to our student support team during the initial weeks of the semester to switch or upgrade your enrolled program.',
+        image: Images.HeroSection.NewStd,
     },
     {
         id: 6,
-        question: 'What career support services do you provide?',
-        answer: 'Our dedicated placement cell offers comprehensive career support including resume building, interview preparation, skill development workshops, industry networking events, and campus recruitment drives. We have tie-ups with leading companies across various sectors to facilitate job placements.',
-        icon: Briefcase,
+        question: 'Are there any hidden fees?',
+        answer: 'No, we maintain complete transparency in our fee structure. All tuition, examination, and learning resource fees are clearly stated upfront. We also offer easy EMI options and merit-based scholarships.',
+        image: Images.HeroSection.NewStd2,
     }
 ];
 
 export default function FAQPage() {
-    const [openId, setOpenId] = useState<number | null>(1);
-    const [searchTerm, setSearchTerm] = useState('');
+    // Default open state is 3 (matches the image!)
+    const [openId, setOpenId] = useState<number | null>(3);
 
     const toggleFAQ = (id: number) => {
         setOpenId(openId === id ? null : id);
     };
-
-    const filteredFaqs = faqData.filter(faq =>
-        faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     // SEO Structured Data (FAQ Schema JSON-LD)
     const schemaData = {
@@ -82,7 +78,7 @@ export default function FAQPage() {
                 description="Find answers to common questions about our programs and admissions"
             />
 
-            <main className="w-full min-h-screen relative font-sans flex flex-col pt-32 overflow-hidden bg-[#F8FAFC]">
+            <main className="w-full min-h-screen relative font-sans flex flex-col pt-16 md:pt-24 overflow-hidden bg-[#F8FAFC]">
 
                 {/* SEO JSON-LD Schema */}
                 <script
@@ -100,102 +96,166 @@ export default function FAQPage() {
                         priority
                     />
                     {/* Soft multi-layer gradient to maintain glassmorphism contrast and maximum text legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/95 via-[#F8FAFC]/85 to-[#EBF4FF]/95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/95 via-[#F8FAFC]/95 to-[#EBF4FF]/95" />
                 </div>
-
-
 
                 <section className="flex-grow relative pb-24 overflow-hidden">
                     {/* Decorative Glowing Orbs */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-400/25 to-cyan-400/25 blur-[100px] rounded-full pointer-events-none -z-10" />
-                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-300/30 blur-[120px] rounded-full pointer-events-none -z-10" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-400/15 to-cyan-400/15 blur-[100px] rounded-full pointer-events-none -z-10" />
+                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-300/20 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-                    <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
+                    <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
+                        {/* Two-column layout matching the target UI design */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                            
+                            {/* Left Column: FAQ Accordion List (col-span-7) */}
+                            <div className="lg:col-span-7 space-y-4 md:space-y-5 order-2 lg:order-1">
+                                
+                                {/* Mobile-only Header (rendered above the FAQ list on mobile) */}
+                                <div className="lg:hidden mb-6">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#FBE6D5] bg-[#FDF8F3] shadow-xs text-xs font-bold text-[#D66A23] mb-4 uppercase tracking-wider">
+                                        <GraduationCap className="w-3.5 h-3.5" />
+                                        <span>Faq&apos;s</span>
+                                    </div>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1B3B36] tracking-tight leading-tight">
+                                        Find answers to common <span className="italic font-serif text-[#D66A23] font-normal">questions</span> about courses
+                                    </h2>
+                                </div>
 
-                        {/* FAQ Accordion List */}
-                        <div className="space-y-4 md:space-y-6">
-                            {filteredFaqs.length > 0 ? (
-                                filteredFaqs.map((faq, index) => {
+                                {faqData.map((faq, index) => {
                                     const isOpen = openId === faq.id;
-                                    const Icon = faq.icon;
 
                                     return (
                                         <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 15 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: index * 0.08 }}
+                                            transition={{ duration: 0.4, delay: index * 0.05 }}
                                             key={faq.id}
+                                            layout="position"
                                             className={cn(
-                                                "group rounded-2xl md:rounded-[2rem] border transition-all duration-300 overflow-hidden",
+                                                "w-full bg-white border rounded-2xl md:rounded-[1.75rem] transition-all duration-300 overflow-hidden",
                                                 isOpen
-                                                    ? "bg-white/90 backdrop-blur-xl border-blue-200/80 shadow-[0_20px_40px_rgba(59,130,246,0.1)]"
-                                                    : "bg-white/60 backdrop-blur-md border-white/80 shadow-sm hover:shadow-md hover:bg-white/80"
+                                                    ? "border-slate-200 shadow-[0_15px_30px_rgba(27,59,54,0.06)]"
+                                                    : "border-[#E5E9F0] shadow-sm hover:shadow-md hover:border-slate-300"
                                             )}
                                         >
-                                            <button
+                                            <div
                                                 onClick={() => toggleFAQ(faq.id)}
-                                                className="w-full flex items-center justify-between p-6 md:p-8 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-inset rounded-2xl md:rounded-[2rem]"
-                                                aria-expanded={isOpen}
+                                                className="w-full p-5 sm:p-7 cursor-pointer select-none text-left flex items-start gap-4 sm:gap-6"
                                             >
-                                                <div className="flex items-center gap-4 md:gap-6 pr-4">
-                                                    {/* Interactive Icon Box */}
-                                                    <div className={cn(
-                                                        "w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300",
-                                                        isOpen ? "bg-blue-50 text-[#3B82F6]" : "bg-slate-100 text-slate-500 group-hover:bg-blue-50/60 group-hover:text-[#3B82F6]"
-                                                    )}>
-                                                        <Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
-                                                    </div>
+                                                {/* Left side Image - Animates and shows on open state */}
+                                                {isOpen && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, scale: 0.92 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        exit={{ opacity: 0, scale: 0.92 }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="relative w-20 h-16 sm:w-28 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-slate-100 shadow-xs block"
+                                                    >
+                                                        <Image
+                                                            src={faq.image}
+                                                            alt={faq.question}
+                                                            fill
+                                                            sizes="(max-w-640px) 80px, 112px"
+                                                            className="object-cover"
+                                                            priority={index < 3}
+                                                        />
+                                                    </motion.div>
+                                                )}
+
+                                                <div className="flex-1 min-w-0">
                                                     <h3 className={cn(
-                                                        "text-base md:text-xl font-bold tracking-tight transition-colors duration-300",
-                                                        isOpen ? "text-[#031B33]" : "text-slate-700 group-hover:text-slate-900"
+                                                        "text-sm sm:text-base md:text-lg font-bold tracking-tight transition-colors duration-300",
+                                                        isOpen ? "text-[#1B3B36]" : "text-slate-800"
                                                     )}>
                                                         {faq.question}
                                                     </h3>
+                                                    
+                                                    <AnimatePresence initial={false}>
+                                                        {isOpen && (
+                                                            <motion.div
+                                                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                                                                animate={{ height: 'auto', opacity: 1, marginTop: 8 }}
+                                                                exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                                className="overflow-hidden"
+                                                            >
+                                                                <p className="text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed font-medium">
+                                                                    {faq.answer}
+                                                                </p>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
                                                 </div>
 
-                                                {/* Plus/Minus Toggle Icon */}
-                                                <div className={cn(
-                                                    "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-500",
-                                                    isOpen ? "bg-[#3B82F6] text-white rotate-180" : "bg-slate-100 text-slate-400 group-hover:bg-slate-200"
-                                                )}>
-                                                    {isOpen ? <Minus className="w-4 h-4" strokeWidth={2.5} /> : <Plus className="w-4 h-4" strokeWidth={2.5} />}
-                                                </div>
-                                            </button>
-
-                                            {/* Framer Motion Smooth Height Reveal */}
-                                            <AnimatePresence initial={false}>
-                                                {isOpen && (
-                                                    <motion.div
-                                                        initial={{ height: 0, opacity: 0 }}
-                                                        animate={{ height: 'auto', opacity: 1 }}
-                                                        exit={{ height: 0, opacity: 0 }}
-                                                        transition={{
-                                                            height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
-                                                            opacity: { duration: 0.25, delay: 0.1 }
-                                                        }}
-                                                    >
-                                                        <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 ml-14 md:ml-18">
-                                                            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
-                                                                {faq.answer}
-                                                            </p>
+                                                {/* Plus/Minus Action Toggle Icon */}
+                                                <div className="shrink-0 pt-0.5">
+                                                    {isOpen ? (
+                                                        <div className="w-8 h-8 rounded-full bg-[#123C35] text-white flex items-center justify-center shadow-xs transition-transform duration-300">
+                                                            <Minus className="w-4 h-4" strokeWidth={3} />
                                                         </div>
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
+                                                    ) : (
+                                                        <div className="w-8 h-8 rounded-full bg-white border-2 border-[#123C35] text-[#123C35] flex items-center justify-center transition-all duration-300 hover:bg-slate-50">
+                                                            <Plus className="w-4 h-4" strokeWidth={3} />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </motion.div>
                                     );
-                                })
-                            ) : (
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    className="text-center py-12 bg-white/60 backdrop-blur-md rounded-2xl border border-white/80 p-8 shadow-sm"
-                                >
-                                    <HelpCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                                    <h4 className="text-lg font-bold text-slate-700 mb-1">No matching questions found</h4>
-                                    <p className="text-sm text-slate-500">We couldn&apos;t find any FAQ matching &quot;{searchTerm}&quot;. Try searching for something else or contact our support.</p>
-                                </motion.div>
-                            )}
+                                })}
+                            </div>
+
+                            {/* Right Column: Title and Contacts Card (col-span-5) */}
+                            <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28 order-1 lg:order-2">
+                                
+                                {/* Desktop-only Header */}
+                                <div className="hidden lg:block">
+                                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FBE6D5] bg-[#FDF8F3] shadow-xs text-xs font-bold text-[#D66A23] mb-4 uppercase tracking-wider">
+                                        <GraduationCap className="w-4 h-4" />
+                                        <span>Faq&apos;s</span>
+                                    </div>
+                                    <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1B3B36] tracking-tight leading-[1.15] mb-2">
+                                        Find answers to common <span className="italic font-serif text-[#D66A23] font-normal">questions</span> about courses
+                                    </h2>
+                                </div>
+
+                                {/* Premium Cream Contact Card */}
+                                <div className="bg-[#F7F4EF] rounded-[2.25rem] p-3 sm:p-4 flex flex-col gap-6 border border-slate-100/50 shadow-xs mt-4 lg:mt-0">
+                                    {/* Info Row Pill */}
+                                    <div className="bg-white rounded-2xl border border-slate-100 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-semibold text-slate-700 shadow-2xs">
+                                        <div className="flex items-center gap-2.5">
+                                            <Mail className="w-4 h-4 text-slate-400" />
+                                            <a href="mailto:info@bditAcademic.com" className="hover:text-[#D66A23] transition-colors">
+                                                info@bditAcademic.com
+                                            </a>
+                                        </div>
+                                        
+                                        <div className="hidden sm:block w-px h-5 bg-slate-200" />
+                                        
+                                        <div className="flex items-center gap-2.5">
+                                            <Phone className="w-4 h-4 text-slate-400" />
+                                            <a href="tel:+917045229016" className="hover:text-[#D66A23] transition-colors">
+                                                +91 70452 29016
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    {/* Interactive Get in Touch Button */}
+                                    <Link 
+                                        href="/contact" 
+                                        className="flex items-center justify-between bg-white border border-[#E0E0E0] rounded-2xl p-1.5 pl-6 pr-1.5 hover:shadow-md transition-all duration-300 group w-fit gap-6 min-w-[200px]"
+                                    >
+                                        <span className="text-slate-800 font-bold text-sm group-hover:text-[#D66A23] transition-colors">
+                                            Get In Touch
+                                        </span>
+                                        <span className="bg-[#D66A23] text-white w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 shadow-sm shrink-0">
+                                            <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />
+                                        </span>
+                                    </Link>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>
